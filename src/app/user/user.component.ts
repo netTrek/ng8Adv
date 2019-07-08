@@ -1,15 +1,18 @@
 import {
-  AfterContentInit,
+  AfterViewInit,
   Component,
-  ContentChild,
-  ContentChildren,
-  ElementRef, OnDestroy,
-  OnInit, QueryList,
-  TemplateRef,
-  ViewContainerRef
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  QueryList,
+  Renderer,
+  Renderer2,
+  ViewChild,
+  ViewChildren
 } from '@angular/core';
 import { UserIconComponent } from './user-icon/user-icon.component';
-import { Subscription } from 'rxjs';
+import { interval, Subscription } from 'rxjs';
+import { first, mapTo } from 'rxjs/operators';
 
 @Component({
   selector: 'msg-user',
@@ -17,22 +20,35 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent
-  implements OnInit, AfterContentInit,
-              OnDestroy{
+  implements OnInit, AfterViewInit,
+              OnDestroy {
 
-  @ContentChild ( 'stat', {static: true } )
+  @ViewChild ( 'stat', {static: true } )
   stat: ElementRef<HTMLElement>;
 
-  @ContentChildren( UserIconComponent )
+  @ViewChildren( UserIconComponent )
   icons: QueryList<UserIconComponent>;
   private sub: Subscription;
-  constructor() { }
+  show: any;
+  constructor( private renderer: Renderer2 ) { }
 
   ngOnInit() {
     console.log ( this.stat );
+    // nur nur nur nur nur nur
+    // wie nie SSR geplant ist!
+    // this.stat.nativeElement.setAttribute( 'style', 'background-color: red');
+    this.renderer.setStyle( this.stat.nativeElement, 'color', 'red');
+    interval( 1000 )
+      .pipe(
+        mapTo ( true ),
+        first()
+        // take ( 3 )
+      ).subscribe( value => {
+      this.show = value;
+    });
   }
 
-  ngAfterContentInit(): void {
+  ngAfterViewInit(): void {
     console.log ( this.icons.toArray() );
     this.sub = this.icons.changes
         .subscribe( value => console.log ( value) );

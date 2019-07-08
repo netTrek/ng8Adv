@@ -1,5 +1,15 @@
-import { AfterContentInit, Component, ContentChild, ElementRef, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  ContentChild,
+  ContentChildren,
+  ElementRef, OnDestroy,
+  OnInit, QueryList,
+  TemplateRef,
+  ViewContainerRef
+} from '@angular/core';
 import { UserIconComponent } from './user-icon/user-icon.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'msg-user',
@@ -7,19 +17,25 @@ import { UserIconComponent } from './user-icon/user-icon.component';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent
-  implements OnInit, AfterContentInit {
+  implements OnInit, AfterContentInit,
+              OnDestroy{
 
-  @ContentChild ( UserIconComponent,
-    {static: true})
-  icon: UserIconComponent;
+  @ContentChildren( UserIconComponent )
+  icons: QueryList<UserIconComponent>;
+  private sub: Subscription;
   constructor() { }
 
   ngOnInit() {
-    console.log ( '#1', this.icon );
   }
 
   ngAfterContentInit(): void {
-    console.log ( '#2', this.icon );
+    console.log ( this.icons.toArray() );
+    this.sub = this.icons.changes
+        .subscribe( value => console.log ( value) );
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 
 }

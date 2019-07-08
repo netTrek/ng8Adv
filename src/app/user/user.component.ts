@@ -1,18 +1,8 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnDestroy,
-  OnInit,
-  QueryList,
-  Renderer,
-  Renderer2,
-  ViewChild,
-  ViewChildren
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
 import { UserIconComponent } from './user-icon/user-icon.component';
 import { interval, Subscription } from 'rxjs';
-import { first, mapTo } from 'rxjs/operators';
+import { mapTo } from 'rxjs/operators';
+import { first } from 'rxjs/internal/operators/first';
 
 @Component({
   selector: 'msg-user',
@@ -28,8 +18,14 @@ export class UserComponent
 
   @ViewChildren( UserIconComponent )
   icons: QueryList<UserIconComponent>;
-  private sub: Subscription;
   show: any;
+
+  html = `hello <strong>world</strong><script>alert('hello');</script>`;
+
+  width = 10;
+
+  private sub: Subscription;
+
   constructor( private renderer: Renderer2 ) { }
 
   ngOnInit() {

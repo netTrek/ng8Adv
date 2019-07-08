@@ -1,12 +1,12 @@
 import {
   AfterViewInit,
   Component,
-  ElementRef, EventEmitter,
-  Input,
+  ElementRef, EventEmitter, HostBinding, HostListener,
+  Input, OnChanges,
   OnDestroy,
   OnInit, Output,
   QueryList,
-  Renderer2,
+  Renderer2, SimpleChanges,
   ViewChild,
   ViewChildren
 } from '@angular/core';
@@ -22,13 +22,17 @@ import { User } from './user';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent
-  implements OnInit, OnDestroy {
+  implements OnInit, OnDestroy, OnChanges {
   @Input ()
   user: User;
+  @Input ()
+  selectedUsr: User;
 
   @Output()
   selectUsr: EventEmitter<User> = new EventEmitter<User>();
 
+  @HostBinding('class.selected')
+  selected = false;
   constructor(  ) { }
 
   ngOnInit() {
@@ -37,7 +41,15 @@ export class UserComponent
   ngOnDestroy(): void {
   }
 
-  emitEvent() {
+  ngOnChanges( changes: SimpleChanges ): void {
+    // console.log ( changes );
+    if ( changes.hasOwnProperty('selectedUsr') ) {
+      this.selected = this.user === changes.selectedUsr.currentValue;
+    }
+  }
+
+  @HostListener ('click')
+  private emitEvent() {
     this.selectUsr.emit( this.user );
   }
 }

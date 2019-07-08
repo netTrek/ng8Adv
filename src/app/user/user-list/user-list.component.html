@@ -1,7 +1,8 @@
 <p>user-list works!</p>
-<h3 *ngIf="selectedUsr">{{selectedUsr | json}}</h3>
+<!--<h3 *ngIf="selectedUsr">{{selectedUsr | json}}</h3>-->
 <msg-user *ngFor="let user of userList"
           [user]="user"
+          [selectedUsr]="selectedUsr"
           (selectUsr)="setSelectedUser($event)"
 >
 </msg-user>

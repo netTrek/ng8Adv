@@ -1,6 +1,9 @@
 :host {
   display: block;
   background-color: aquamarine;
+  &.selected {
+    background-color: #66cba6;
+  }
 }
 #d2 {
   display: inline-block;

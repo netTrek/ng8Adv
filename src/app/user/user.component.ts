@@ -20,12 +20,16 @@ export class UserComponent
   implements OnInit, AfterContentInit,
               OnDestroy{
 
+  @ContentChild ( 'stat', {static: true } )
+  stat: ElementRef<HTMLElement>;
+
   @ContentChildren( UserIconComponent )
   icons: QueryList<UserIconComponent>;
   private sub: Subscription;
   constructor() { }
 
   ngOnInit() {
+    console.log ( this.stat );
   }
 
   ngAfterContentInit(): void {

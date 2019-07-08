@@ -1,10 +1,10 @@
 import {
   AfterViewInit,
   Component,
-  ElementRef,
+  ElementRef, EventEmitter,
   Input,
   OnDestroy,
-  OnInit,
+  OnInit, Output,
   QueryList,
   Renderer2,
   ViewChild,
@@ -26,6 +26,9 @@ export class UserComponent
   @Input ()
   user: User;
 
+  @Output()
+  selectUsr: EventEmitter<User> = new EventEmitter<User>();
+
   constructor(  ) { }
 
   ngOnInit() {
@@ -34,4 +37,7 @@ export class UserComponent
   ngOnDestroy(): void {
   }
 
+  emitEvent() {
+    this.selectUsr.emit( this.user );
+  }
 }

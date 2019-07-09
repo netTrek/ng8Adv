@@ -23,6 +23,18 @@
       "firstname": "Peter",
       "birthday": "1974-11-04",
       "id": 4
+    },
+    {
+      "lastname": "Müller",
+      "firstname": "Peter",
+      "birthday": "1974-11-04",
+      "id": 5
+    },
+    {
+      "lastname": "Müller",
+      "firstname": "Peter",
+      "birthday": "1974-11-04",
+      "id": 6
     }
   ]
 }

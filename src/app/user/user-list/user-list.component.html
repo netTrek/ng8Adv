@@ -1,8 +1,19 @@
 <p>user-list works!</p>
-<!--<h3 *ngIf="selectedUsr">{{selectedUsr | json}}</h3>-->
-<msg-user *ngFor="let user of userList"
+<!--<h2 *ngIf="false; else nouser">false</h2>-->
+<h3 *ngIf="selectedUsr; else nouser">{{selectedUsr | json}}</h3>
+<ng-template #nouser>
+  <h3>No User Selected</h3>
+</ng-template>
+<msg-user *ngFor="let user of userList; index as i"
+          [id]="'user'+i"
           [user]="user"
           [selectedUsr]="selectedUsr"
           (selectUsr)="setSelectedUser($event)"
+          [msgMachWas]="selectedUsr === user"
 >
 </msg-user>
+
+<button class="my-button my-button2" [msgMachWas]="true" selectedColor="yellow" msgMachWas2>red</button>
+<button [msgMachWas]="false">black</button>
+<a href="http://netTrek.de">netTrek</a>
+<a>netTrek</a>

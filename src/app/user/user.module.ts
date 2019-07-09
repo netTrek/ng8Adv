@@ -6,6 +6,7 @@ import { UserListComponent } from './user-list/user-list.component';
 import { MachWasDirective } from './mach-was.directive';
 import { ForElemDirective } from './for-elem.directive';
 import { MachWas2Directive } from './mach-was-2.directive';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule ( {
   declarations: [ UserComponent,
@@ -16,7 +17,7 @@ import { MachWas2Directive } from './mach-was-2.directive';
                   MachWas2Directive
   ],
   imports     : [
-    CommonModule
+    CommonModule, HttpClientModule
   ],
   exports     : [ UserComponent,
                   UserIconComponent,

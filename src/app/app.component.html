@@ -3,12 +3,15 @@
 <msg-rxjs-samples></msg-rxjs-samples>
 -->
 
+<!--
 <msg-di-sample></msg-di-sample>
+-->
 
 <!--
 <msg-user-list [userList]="userList"></msg-user-list>
-<msg-user-list [userList]="userList"></msg-user-list>
 -->
+
+<msg-user-list [userList]="$user.userList$ | async"></msg-user-list>
 
 <!--<div style="text-align:center">
   <h1>

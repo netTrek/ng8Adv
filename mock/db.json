@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "firstname": "Mackenzie",
+      "lastname": "Hodges",
+      "birthday": "1990-11-11"
+    },
+    {
+      "id": 2,
+      "firstname": "Aaliyah",
+      "lastname": "Hailey",
+      "birthday": "1991-11-11"
+    },
+    {
+      "lastname": "Ünlü",
+      "firstname": "Saban",
+      "birthday": "1974-11-04",
+      "id": 3
+    },
+    {
+      "lastname": "Müller",
+      "firstname": "Peter",
+      "birthday": "1974-11-04",
+      "id": 4
+    }
+  ]
+}

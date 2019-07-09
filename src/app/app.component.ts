@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { User } from './user/user';
+import { UserService } from './user/user.service';
+import { interval } from 'rxjs';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'msg-root',
@@ -8,13 +11,14 @@ import { User } from './user/user';
 })
 export class AppComponent {
   title = 'msg19';
-  userList: User[] = [
-    {age: 1, name: 'peter' },
-    {age: 2, name: 'heike' },
-    {age: 3, name: 'frank' }
-  ];
 
-  constructor() {
-
+  constructor( public $user: UserService ) {
+    interval( 1500 ).pipe(
+      first()
+    ).subscribe(
+      value => $user.createNewUser( { lastname: 'Müller', firstname: 'Peter', birthday: '1974-11-04'} ).then( succ => {
+        console.warn( 'new user is', succ );
+      })
+    );
   }
 }

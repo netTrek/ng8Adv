@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserModule } from './user/user.module';
 import { ShareModule } from './share/share.module';
+import { RxjsSamplesModule } from './rxjs-samples/rxjs-samples.module';
+import { DiSamplesModule } from './di-samples/di-samples.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { ShareModule } from './share/share.module';
     BrowserModule,
     AppRoutingModule,
     UserModule,
-    ShareModule
+    ShareModule,
+    RxjsSamplesModule,
+    DiSamplesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

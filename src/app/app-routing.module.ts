@@ -5,16 +5,31 @@ import { RxjsSamplesComponent } from './rxjs-samples/rxjs-samples.component';
 import { DiSampleComponent } from './di-samples/di-sample.component';
 import { ModaAComponent } from './modal/moda-a/moda-a.component';
 import { TempDrivenComponent } from './temp-driven/temp-driven.component';
+import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+import { EmbeddedSamplesComponent } from './embedded-samples/embedded-samples.component';
+import { DynCompComponent } from './dyn-comp/dyn-comp.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'templateDriven'
+    redirectTo: 'dynComp'
+  },
+  {
+    path: 'dynComp',
+    component: DynCompComponent
+  },
+  {
+    path: 'embeddedSamples',
+    component: EmbeddedSamplesComponent
   },
   {
     path: 'templateDriven',
     component: TempDrivenComponent
+  },
+  {
+    path: 'reactiveForm',
+    component: ReactiveFormComponent
   },
   {
     path: 'list',

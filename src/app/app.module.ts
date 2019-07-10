@@ -12,6 +12,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './auth-interceptor.service';
 import { ModalModule } from './modal/modal.module';
 import { TempDrivenModule } from './temp-driven/temp-driven.module';
+import { ReactiveFormModule } from './reactive-form/reactive-form.module';
+import { EmbeddedSamplesModule } from './embedded-samples/embedded-samples.module';
+import { DynCompModule } from './dyn-comp/dyn-comp.module';
 
 export const myFactory = ( userList: string [] ) => {
   const test = userList[0];
@@ -30,7 +33,10 @@ export const myFactory = ( userList: string [] ) => {
     RxjsSamplesModule,
     DiSamplesModule,
     ModalModule,
-    TempDrivenModule
+    TempDrivenModule,
+    ReactiveFormModule,
+    EmbeddedSamplesModule,
+    DynCompModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },

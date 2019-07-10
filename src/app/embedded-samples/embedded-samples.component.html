@@ -1,0 +1,17 @@
+<p>embedded-samples works!</p>
+
+<ng-template #hr>
+  <hr>
+</ng-template>
+<!-- Container Ref -->
+<ng-container *ngTemplateOutlet="hr"></ng-container>
+<!-- Container Ref von ngTemplateOutlet-->
+
+<msg-temp-via-content>
+  <div *msgTemp="'';$implicit as i; val as v" >
+    {{i}} {{v}} Lorem .
+  </div>
+  <ng-template #renderer let-i let-val="val">
+    <li>{{i}} {{val}}</li>
+  </ng-template>
+</msg-temp-via-content>

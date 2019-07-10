@@ -23,7 +23,7 @@ export class MsgMailAsyncValidator {
       return of (null );
     }
     const outputVal = /\@msg\.group$/i.test( control.value ) ? null : { msgMail: true };
-    return of ( outputVal ).pipe( delay( 1500 ) );
+    return of ( outputVal ).pipe( delay( 500 ) );
   }
 }
 

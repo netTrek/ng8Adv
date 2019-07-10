@@ -12,7 +12,7 @@ export class MachWasDirective implements OnChanges {
   selectedColor = 'red';
 
   constructor( private elemRef: ElementRef, private renderer: Renderer2 ) {
-    console.log ( this.elemRef );
+    // console.log ( this.elemRef );
   }
 
   ngOnChanges( changes: SimpleChanges ): void {

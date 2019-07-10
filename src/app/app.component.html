@@ -10,8 +10,10 @@
 <!--
 <msg-user-list [userList]="userList"></msg-user-list>
 -->
+<!--
 
 <msg-user-list [userList]="$user.userList$ | async"></msg-user-list>
+-->
 
 <!--<div style="text-align:center">
   <h1>
@@ -34,5 +36,18 @@
 
 </msg-user>
 -->
+<nav>
+  <a routerLink="list">list</a>
+  |
+  <a routerLink="rxjs">rxjs</a>
+  |
+  <a routerLink="di">di</a>
+  |
+  <a [routerLink]="[ { outlets: { modal: ['modalA'] }}]">modalA</a>
+</nav>
 
 <router-outlet></router-outlet>
+<div class="modal" [ngClass]="{ show: show }">
+  <a [routerLink]="[ { outlets: { modal: null }}]" (click)="show=false">x</a>
+  <router-outlet name="modal"></router-outlet>
+</div>

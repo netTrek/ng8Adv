@@ -10,6 +10,7 @@ import { DiSamplesModule } from './di-samples/di-samples.module';
 import { USER_EXI, USER_FAC, USER_NAME } from './my-token';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './auth-interceptor.service';
+import { ModalModule } from './modal/modal.module';
 
 export const myFactory = ( userList: string [] ) => {
   const test = userList[0];
@@ -26,7 +27,8 @@ export const myFactory = ( userList: string [] ) => {
     UserModule,
     ShareModule,
     RxjsSamplesModule,
-    DiSamplesModule
+    DiSamplesModule,
+    ModalModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },

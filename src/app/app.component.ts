@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { User } from './user/user';
 import { UserService } from './user/user.service';
 import { interval } from 'rxjs';
-import { first } from 'rxjs/operators';
+import { filter, first, tap } from 'rxjs/operators';
+import { ActivationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'msg-root',
@@ -11,14 +12,17 @@ import { first } from 'rxjs/operators';
 })
 export class AppComponent {
   title = 'msg19';
+  show = false;
 
-  constructor( public $user: UserService ) {
-    // interval( 1500 ).pipe(
-    //   first()
-    // ).subscribe(
-    //   value => $user.createNewUser( { lastname: 'Müller', firstname: 'Peter', birthday: '1974-11-04'} ).then( succ => {
-    //     console.warn( 'new user is', succ );
-    //   })
-    // );
+  constructor( router: Router  ) {
+    router.events.pipe(
+      tap( console.warn ),
+      filter( value => value instanceof ActivationEnd ),
+      tap( console.log )
+    ).subscribe( (value: ActivationEnd) => {
+      if ( value.snapshot.outlet === 'modal' ) {
+        this.show = true;
+      }
+    })
   }
 }

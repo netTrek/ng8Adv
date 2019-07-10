@@ -4,16 +4,23 @@
 >
   <input type="text" name="name" ngModel #name="ngModel" placeholder="Bitte Namen eintragen">
   <div ngModelGroup="credentials">
-    <input type="email" name="email" ngModel #email="ngModel" placeholder="Bitte E-Mail eintragen"  required email>
+    <input type="email" name="email" ngModel #email="ngModel"
+           placeholder="Bitte E-Mail eintragen" required msgAsyncMail>
     <div *ngIf="email.dirty && email.errors">
       <div *ngIf="email.errors?.required">
         Du musst was eintrage
       </div>
       <div *ngIf="email.errors?.email">
-        Dies ist keine gültige EMail
+        Dies ist keine gültige E-Mail
+      </div>
+      <div *ngIf="email.errors?.msgMail">
+        Dies ist keine gültige msg E-Mail
       </div>
     </div>
-    <input type="password" name="password" ngModel #password="ngModel" placeholder="Bitte Passwort eintragen">
+    <input type="password" name="password" ngModel #password="ngModel"
+           placeholder="Bitte Passwort eintragen">
+    <input type="text" name="serial" ngModel #serial="ngModel"
+           placeholder="Bitte Seriennummer eintragen" msgSerial>
   </div>
   <button type="submit" [disabled]="myForm.invalid">SEND</button>
   <button type="reset" [disabled]="myForm.pristine">RESET</button>

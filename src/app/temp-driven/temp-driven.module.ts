@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TempDrivenComponent } from './temp-driven.component';
+import { FormUtilsModule } from '../form-utils/form-utils.module';
 
 
 
@@ -9,7 +10,8 @@ import { TempDrivenComponent } from './temp-driven.component';
   declarations: [TempDrivenComponent],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    FormUtilsModule
   ],
   exports: [TempDrivenComponent]
 })

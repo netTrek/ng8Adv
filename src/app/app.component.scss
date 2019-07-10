@@ -1,13 +1,20 @@
 .modal {
   position: absolute;
   left: 0;
-  right: 0;
-  bottom: 0;
   top: 0;
+  width: 100vw;
   background-color: gray;
+  height: 100vh;
   visibility: hidden;
 
   &.show {
     visibility: visible;
+  }
+
+  a {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: aliceblue;
   }
 }

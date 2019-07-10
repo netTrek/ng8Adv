@@ -16,13 +16,11 @@ export class AppComponent {
 
   constructor( router: Router  ) {
     router.events.pipe(
-      tap( console.warn ),
-      filter( value => value instanceof ActivationEnd ),
-      tap( console.log )
+      filter( value => value instanceof ActivationEnd )
     ).subscribe( (value: ActivationEnd) => {
       if ( value.snapshot.outlet === 'modal' ) {
         this.show = true;
       }
-    })
+    });
   }
 }

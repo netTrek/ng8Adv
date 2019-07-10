@@ -1,0 +1,29 @@
+<form novalidate #myForm="ngForm"
+      (ngSubmit)="send( myForm.value )"
+      (reset)="myForm.reset()"
+>
+  <input type="text" name="name" ngModel #name="ngModel" placeholder="Bitte Namen eintragen">
+  <div ngModelGroup="credentials">
+    <input type="email" name="email" ngModel #email="ngModel" placeholder="Bitte E-Mail eintragen"  required email>
+    <div *ngIf="email.dirty && email.errors">
+      <div *ngIf="email.errors?.required">
+        Du musst was eintrage
+      </div>
+      <div *ngIf="email.errors?.email">
+        Dies ist keine gültige EMail
+      </div>
+    </div>
+    <input type="password" name="password" ngModel #password="ngModel" placeholder="Bitte Passwort eintragen">
+  </div>
+  <button type="submit" [disabled]="myForm.invalid">SEND</button>
+  <button type="reset" [disabled]="myForm.pristine">RESET</button>
+</form>
+<!--
+
+<p>myForm.value {{myForm.value | json}}</p>
+<p>email.value {{email.value | json}}</p>
+<p>email.valid {{email.valid | json}}</p>
+<p>email.dirty {{email.dirty | json}}</p>
+<p>email.touched {{email.touched | json}}</p>
+<p>email.errors {{email.errors | json}}</p>
+-->

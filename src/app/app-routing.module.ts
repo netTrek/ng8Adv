@@ -4,12 +4,17 @@ import { UserListComponent } from './user/user-list/user-list.component';
 import { RxjsSamplesComponent } from './rxjs-samples/rxjs-samples.component';
 import { DiSampleComponent } from './di-samples/di-sample.component';
 import { ModaAComponent } from './modal/moda-a/moda-a.component';
+import { TempDrivenComponent } from './temp-driven/temp-driven.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'list'
+    redirectTo: 'templateDriven'
+  },
+  {
+    path: 'templateDriven',
+    component: TempDrivenComponent
   },
   {
     path: 'list',

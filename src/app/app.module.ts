@@ -15,6 +15,7 @@ import { TempDrivenModule } from './temp-driven/temp-driven.module';
 import { ReactiveFormModule } from './reactive-form/reactive-form.module';
 import { EmbeddedSamplesModule } from './embedded-samples/embedded-samples.module';
 import { DynCompModule } from './dyn-comp/dyn-comp.module';
+import { CdModule } from './cd/cd.module';
 
 export const myFactory = ( userList: string [] ) => {
   const test = userList[0];
@@ -36,7 +37,8 @@ export const myFactory = ( userList: string [] ) => {
     TempDrivenModule,
     ReactiveFormModule,
     EmbeddedSamplesModule,
-    DynCompModule
+    DynCompModule,
+    CdModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },

@@ -8,12 +8,17 @@ import { TempDrivenComponent } from './temp-driven/temp-driven.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { EmbeddedSamplesComponent } from './embedded-samples/embedded-samples.component';
 import { DynCompComponent } from './dyn-comp/dyn-comp.component';
+import { CdComponent } from './cd/cd.component';
 
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'dynComp'
+    redirectTo: 'cd'
+  },
+  {
+    path: 'cd',
+    component: CdComponent
   },
   {
     path: 'dynComp',

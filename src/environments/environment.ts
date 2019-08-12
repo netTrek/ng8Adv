@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  enpoint: 'http://localhost:3200/users'
+  enpoint: 'http://DOMAIN/TESTAPI/users'
 };
 
 /*

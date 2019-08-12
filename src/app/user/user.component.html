@@ -1,0 +1,25 @@
+
+<h1>{{name}}</h1>
+<button
+  class="myButton"
+  (click)="chgName()">name ändern</button>
+
+<div [innerHTML]="html + ' hello'"
+     [style.color]="color"
+></div>
+<div>{{html}}</div>
+
+<div class="content"
+     [style.width.px]="width"
+>heppa</div>
+
+<!-- vermeiden
+<img src="{{getUrl( )}}" >
+-->
+
+<!--
+<img [attr.src]="imgUrl"
+     [attr.alt]="imgAlt">
+
+<img [src]="imgUrl">
+-->

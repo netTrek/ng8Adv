@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common';
 import { UserModule } from './user/user.module';
+import { SharesModule } from './shares/shares.module';
 
 @NgModule({
   declarations: [ // registrieurng von Komponenten, Direktiven, Pipes
@@ -13,7 +14,8 @@ import { UserModule } from './user/user.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    UserModule
+    UserModule,
+    SharesModule
   ],
   providers: [], // Services in DI
   bootstrap: [AppComponent] // Root - Komponente

@@ -59,6 +59,10 @@ export class UserComponent implements OnInit {
     this.selected = !this.selected;
   }
 
+  divEntered( selected: boolean, mouseEvent: MouseEvent ) {
+    console.log( 'enter', selected, mouseEvent );
+  }
+
   private startInterval() {
     let count       = 0;
     this.intervalID = window.setInterval ( () => {
@@ -72,4 +76,5 @@ export class UserComponent implements OnInit {
   private stopInterval() {
     window.clearInterval ( this.intervalID );
   }
+
 }

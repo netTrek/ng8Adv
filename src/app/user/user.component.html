@@ -17,6 +17,7 @@
 -->
 
 <div [class.selected]="selected"
+     (mouseenter)="divEntered( selected, $event )"
   (click)="toggleSelection()">{{selected}}</div>
 
 <div class="content"

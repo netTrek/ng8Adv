@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, HostListener, Input, OnInit, Output } from '@angular/core';
 import { User } from '../../user';
 
 /*
@@ -18,13 +18,31 @@ export class UseritemComponent implements OnInit {
   @Output()
   selectUsr: EventEmitter<User> = new EventEmitter();
 
+  @Input()
+  @HostBinding ('class.selected')
+  selected: boolean;
+
+  @Input()
+  @HostBinding( 'style.color' )
+  fontcolor = 'red';
+
   constructor() {
   }
   ngOnInit() {
   }
 
+  @HostListener('click')
   doSelection() {
-    console.log( 'do selection');
     this.selectUsr.emit( this.user );
   }
+
+  // @HostListener('mouseenter')
+  // doGreen () {
+  //   this.fontcolor = 'green';
+  // }
+  //
+  // @HostListener('mouseleave')
+  // doRed () {
+  //   this.fontcolor = 'red';
+  // }
 }

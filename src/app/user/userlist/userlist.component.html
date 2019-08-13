@@ -1,20 +1,70 @@
 <!--
 <p>{{selectedUser | json }}</p>
 -->
-<ba-useritem
+<!--
   [class.selected]="selectedUser === users[0]"
+-->
+<!--
+<ba-useritem
+  fontcolor="green"
+-->
+<!--
+
+<ng-template [ngIf]="true" >
+  <ul>
+    <li>dasd</li>
+    <li>asd</li>
+    <li>asd</li>
+  </ul>
+</ng-template>
+-->
+<!--
+
+<ul>
+  <li
+    *ngFor="let value of ['user1', 'user2', 'user3']; index as i; first as f; last as l; even as e; odd as o;" [class.even]="e" [class.odd]="o">
+    {{i}} {{value}} {{f}} - {{l}} {{ e }} - {{ o }}
+  </li>
+</ul>
+-->
+<!--
+
+<div *ngIf="selectedUser">
+  {{selectedUser | json }}
+  <span *ngIf="selectedUser.age >= 44; else elseBock">
+    weniger Jung
+  </span>
+  <ng-template #elseBock>
+    <span>
+      Jung
+    </span>
+  </ng-template>
+</div>
+-->
+
+<ba-useritem *ngFor="let user of users"
+  [selected]="selectedUser === user"
+  [user]="user"
+  (selectUsr)="setSelectedUser($event)">
+</ba-useritem>
+<!--
+
+<ba-useritem
+  fontcolor="green"
+  [selected]="selectedUser === users[0]"
   [user]="users[0]"
   (selectUsr)="setSelectedUser($event)">
 </ba-useritem>
 
 <ba-useritem
-  [class.selected]="selectedUser === users[1]"
+  [selected]="selectedUser === users[1]"
   [user]="users[1]"
   (selectUsr)="setSelectedUser($event)">
 </ba-useritem>
 
 <ba-useritem
-  [class.selected]="selectedUser === users[2]"
+  [selected]="selectedUser === users[2]"
   [user]="users[2]"
   (selectUsr)="setSelectedUser($event)">
 </ba-useritem>
+-->

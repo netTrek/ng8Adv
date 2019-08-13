@@ -1,6 +1,20 @@
-<ba-useritem></ba-useritem>
-<ba-useritem></ba-useritem>
-<ba-useritem></ba-useritem>
-<ba-useritem></ba-useritem>
-<ba-useritem></ba-useritem>
-<ba-useritem></ba-useritem>
+<!--
+<p>{{selectedUser | json }}</p>
+-->
+<ba-useritem
+  [class.selected]="selectedUser === users[0]"
+  [user]="users[0]"
+  (selectUsr)="setSelectedUser($event)">
+</ba-useritem>
+
+<ba-useritem
+  [class.selected]="selectedUser === users[1]"
+  [user]="users[1]"
+  (selectUsr)="setSelectedUser($event)">
+</ba-useritem>
+
+<ba-useritem
+  [class.selected]="selectedUser === users[2]"
+  [user]="users[2]"
+  (selectUsr)="setSelectedUser($event)">
+</ba-useritem>

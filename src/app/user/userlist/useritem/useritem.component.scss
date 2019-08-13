@@ -1,0 +1,20 @@
+/*
+
+:host {
+  color: blue;
+}
+:host.selected {
+  color: red;
+}
+*/
+
+:host {
+  display: block;
+  cursor: pointer;
+  &:hover {
+    background-color: rgba(86, 109, 250, 0.27);
+  }
+  &.selected {
+    background-color: #556ceb;
+  }
+}

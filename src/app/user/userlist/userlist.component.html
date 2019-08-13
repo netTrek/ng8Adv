@@ -47,6 +47,9 @@
   [user]="user"
   (selectUsr)="setSelectedUser($event)">
 </ba-useritem>
+
+<button baDanger (doIt)="delLast()">del last user</button>
+
 <!--
 
 <ba-useritem

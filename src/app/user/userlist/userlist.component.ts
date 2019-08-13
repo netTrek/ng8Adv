@@ -32,4 +32,8 @@ export class UserlistComponent implements OnInit {
       this.selectedUser = selectedUser;
     }
   }
+
+  delLast() {
+    this.users.pop();
+  }
 }

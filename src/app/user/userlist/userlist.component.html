@@ -48,7 +48,10 @@
   (selectUsr)="setSelectedUser($event)">
 </ba-useritem>
 
-<button baDanger (doIt)="delLast()">del last user</button>
+<button baDanger="möchtes du den User wirklich löschen"
+        (doIt)="delLast()">
+  del last user
+</button>
 
 <!--
 

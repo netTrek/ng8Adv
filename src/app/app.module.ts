@@ -1,11 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import { UserModule } from './user/user.module';
 import { SharesModule } from './shares/shares.module';
+import { PipeSamplesModule } from './pipe-samples/pipe-samples.module';
+
+import localeDe from '@angular/common/locales/de'; // deutsch importieren
+registerLocaleData( localeDe ); // deutsch im sys registrieren
 
 @NgModule({
   declarations: [ // registrieurng von Komponenten, Direktiven, Pipes
@@ -15,9 +19,12 @@ import { SharesModule } from './shares/shares.module';
     BrowserModule,
     AppRoutingModule,
     UserModule,
-    SharesModule
+    SharesModule,
+    PipeSamplesModule
   ],
-  providers: [], // Services in DI
+  providers: [
+    // { provide: LOCALE_ID, useValue: 'de' } // falls deutsch die standard sprache sein soll
+  ], // Services in DI
   bootstrap: [AppComponent] // Root - Komponente
 })
 export class AppModule { }

@@ -1,0 +1,27 @@
+<h1>uppercase</h1>
+<div>{{myName | uppercase}}</div>
+<div>{{myName | reverse}}</div>
+<div>{{myName | reverse : 'herr '}}</div>
+<h1>date</h1>
+<ul>
+  <li>{{currentDate}}</li>
+  <li>{{currentDate | date}}</li>
+  <li>{{currentDate | date : 'long'}}</li>
+  <li>{{currentDate | date : 'short'}}</li>
+  <li>{{currentDate | date : 'yyyy.mm'}}</li>
+  <li>{{currentDate | date : 'fullTime'}}</li>
+  <li>{{currentDate | date : 'fullTime' : '+0900' : 'de'}}</li>
+  <li>{{currentDate | date : 'fullTime' : '+0900' : 'en'}}</li>
+</ul>
+<h1>number</h1>
+<ul>
+  <li>{{num}}</li>
+  <li>{{num | number}}</li>
+  <li>{{num | number : '3.1-5'}}</li>
+</ul>
+<h1>currency</h1>
+<ul>
+  <li>{{price}}</li>
+  <li>{{price | currency }}</li>
+  <li>{{price | currency : 'EUR' }}</li>
+</ul>

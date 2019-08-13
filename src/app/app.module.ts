@@ -8,7 +8,8 @@ import { UserModule } from './user/user.module';
 import { SharesModule } from './shares/shares.module';
 import { PipeSamplesModule } from './pipe-samples/pipe-samples.module';
 
-import localeDe from '@angular/common/locales/de'; // deutsch importieren
+import localeDe from '@angular/common/locales/de';
+import { RxjsSamplesModule } from './rxjs-samples/rxjs-samples.module'; // deutsch importieren
 registerLocaleData( localeDe ); // deutsch im sys registrieren
 
 @NgModule({
@@ -20,7 +21,8 @@ registerLocaleData( localeDe ); // deutsch im sys registrieren
     AppRoutingModule,
     UserModule,
     SharesModule,
-    PipeSamplesModule
+    PipeSamplesModule,
+    RxjsSamplesModule
   ],
   providers: [
     // { provide: LOCALE_ID, useValue: 'de' } // falls deutsch die standard sprache sein soll

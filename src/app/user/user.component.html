@@ -7,7 +7,17 @@
 <div [innerHTML]="html + ' hello'"
      [style.color]="color"
 ></div>
-<div>{{html}}</div>
+<!--
+
+<div
+  class="saban"
+  [class]="classStr"
+  (click)="toggleClassStr()"
+>{{html}}</div>
+-->
+
+<div [class.selected]="selected"
+  (click)="toggleSelection()">{{selected}}</div>
 
 <div class="content"
      [style.width.px]="width"

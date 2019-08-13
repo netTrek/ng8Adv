@@ -8,11 +8,28 @@ h1 {
 
 // direkte styles auf der Komponente
 :host {
-  background-color: red;
+  background-color: azure;
   display: block
 }
 
 .content {
   display: inline-block;
   background-color: cornflowerblue;
+}
+
+.green-font {
+  color: green;
+}
+
+.blue-font {
+  color: blue;
+}
+
+.bold-font {
+  font-weight: bolder;
+}
+
+.selected {
+  font-weight: bold;
+  text-decoration: underline;
 }

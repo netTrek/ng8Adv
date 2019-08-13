@@ -18,9 +18,11 @@ export class UserComponent implements OnInit {
 
   width = 300;
 
-  html = `hello <strong>world</strong>
+  html     = `hello <strong>world</strong>
 <script>alert('hoppa');</script>`;
   private intervalID: number;
+  classStr = 'green-font bold-font';
+  selected = false;
 
   constructor() {
   }
@@ -39,9 +41,27 @@ export class UserComponent implements OnInit {
     return this.imgUrl;
   }
 
+  toggleClassStr() {
+    this.classStr = 'blue-font bold-font';
+  }
+
+  toggleSelection() {
+    /*
+    if ( this.selected === false ) {
+
+    }
+    */
+    /*
+    if ( !this.selected ) {
+
+    }
+    */
+    this.selected = !this.selected;
+  }
+
   private startInterval() {
-    let count = 0;
-    this.intervalID = window.setInterval( () => {
+    let count       = 0;
+    this.intervalID = window.setInterval ( () => {
       console.log ( 'intervall' );
       if ( count ++ === 10 ) {
         this.stopInterval ();
@@ -50,6 +70,6 @@ export class UserComponent implements OnInit {
   }
 
   private stopInterval() {
-    window.clearInterval( this.intervalID );
+    window.clearInterval ( this.intervalID );
   }
 }

@@ -11,7 +11,8 @@ import { PipeSamplesModule } from './pipe-samples/pipe-samples.module';
 import localeDe from '@angular/common/locales/de';
 import { RxjsSamplesModule } from './rxjs-samples/rxjs-samples.module';
 import { DashModule } from './dash/dash.module';
-import { HomeModule } from './home/home.module'; // deutsch importieren
+import { HomeModule } from './home/home.module';
+import { ContactModule } from './contact/contact.module'; // deutsch importieren
 registerLocaleData( localeDe ); // deutsch im sys registrieren
 
 @NgModule({
@@ -26,7 +27,8 @@ registerLocaleData( localeDe ); // deutsch im sys registrieren
     PipeSamplesModule,
     RxjsSamplesModule,
     DashModule,
-    HomeModule
+    HomeModule,
+    ContactModule
   ],
   providers: [
     // { provide: LOCALE_ID, useValue: 'de' } // falls deutsch die standard sprache sein soll

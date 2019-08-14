@@ -1,17 +1,22 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable ( {
   providedIn: 'root'
 } )
 export class UserService {
-  users: User[] = [
-    { firstname: 'saban', lastname: 'ünlü', age: 44 },
-    { firstname: 'peter', lastname: 'Müller', age: 33 },
-    { firstname: 'heike', lastname: 'Mayer', age: 22 }
-  ];
+  users: User[] = [];
   selectedUser: User;
-  constructor() {
+  constructor( private $http: HttpClient ) {
+    const sub = $http.get<User[]>( 'http://localhost:3000/users' )
+      .subscribe(
+        // ( naechsterWert: User[] ) => {
+        //   this.users = naechsterWert;
+        // }
+        next => this.users = next
+      );
+    // sub.unsubscribe(); // canceled xhr request
     this.init();
   }
   setSelectedUser( selectedUser: User ) {

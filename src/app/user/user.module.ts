@@ -4,6 +4,7 @@ import { UserComponent } from './user.component';
 import { UserlistComponent } from './userlist/userlist.component';
 import { UseritemComponent } from './userlist/useritem/useritem.component';
 import { SharesModule } from '../shares/shares.module';
+import { HttpClientModule } from '@angular/common/http';
 // import { MyTestService } from './my-test-service';
 
 
@@ -15,7 +16,7 @@ import { SharesModule } from '../shares/shares.module';
   ],
   // providers: [MyTestService], // bevopr provideIn innerhalb des Injectable zur Verfügung stand
   imports     : [
-    CommonModule, SharesModule
+    CommonModule, SharesModule, HttpClientModule
   ]
 })
 export class UserModule { }

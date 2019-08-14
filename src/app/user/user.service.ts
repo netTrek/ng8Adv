@@ -68,7 +68,14 @@ export class UserService {
   }
   private preselectFirst() {
     if ( this.users.length > 0 ) {
-      this.setSelectedUser ( this.users [ 0 ] );
+      if ( this.selectedUser ) {
+        const usr = this.users.find(value => value.id === this.selectedUser.id );
+        if ( usr ) {
+          this.setSelectedUser ( usr );
+        }
+      } else {
+        this.setSelectedUser ( this.users [ 0 ] );
+      }
     }
   }
 

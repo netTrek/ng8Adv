@@ -41,17 +41,20 @@
   </ng-template>
 </div>
 -->
-
-<ba-useritem *ngFor="let user of users"
-  [selected]="selectedUser === user"
+<ba-useritem *ngFor="let user of $user.users"
+  [selected]="$user.selectedUser === user"
   [user]="user"
-  (selectUsr)="setSelectedUser($event)">
+  (selectUsr)="$user.setSelectedUser($event)">
 </ba-useritem>
-
-<button baDanger="möchtes du den User wirklich löschen"
-        (doIt)="delLast()">
-  del last user
-</button>
+<ng-template [ngIf]="$user.users.length > 0 ">
+  <button baDanger="möchtes du den letzten User wirklich löschen"
+          (doIt)="delLast()"> del last user
+  </button>
+  <button *ngIf="$user.selectedUser"
+          baDanger="möchtes du den selektierte USer wirklich löschen"
+          (doIt)="$user.delSelectedUsr()"> del selected user
+  </button>
+</ng-template>
 
 <!--
 

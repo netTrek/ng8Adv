@@ -1,41 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
 import { MyTestService } from '../my-test-service';
+import { UserService } from '../user.service';
+
 /*
 ng generate component userlist --skip-tests
  */
 
-@Component({
-  selector: 'ba-userlist',
+@Component ( {
+  selector   : 'ba-userlist',
   templateUrl: './userlist.component.html',
-  styleUrls: ['./userlist.component.scss']
-})
+  styleUrls  : [ './userlist.component.scss' ]
+} )
 export class UserlistComponent implements OnInit {
 
-  users: User[] = [
-    {firstname: 'saban', lastname: 'ünlü', age: 44},
-    {firstname: 'peter', lastname: 'Müller', age: 33},
-    {firstname: 'heike', lastname: 'Mayer', age: 22},
-  ];
-
-  selectedUser: User;
-
-  constructor( public $myService: MyTestService ) { }
+  constructor( public $myService: MyTestService, public $user: UserService ) {}
 
   ngOnInit() {
-    this.selectedUser = this.users[0];
-  }
-
-  setSelectedUser( selectedUser: User ) {
-    if ( this.selectedUser === selectedUser ) {
-      this.selectedUser = undefined;
-    } else {
-      this.selectedUser = selectedUser;
-    }
   }
 
   delLast() {
-    this.users.pop();
+    this.$user.delLastUsr ();
     this.$myService.wert = 'deleted user!';
   }
 }

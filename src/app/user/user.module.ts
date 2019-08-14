@@ -4,6 +4,8 @@ import { UserComponent } from './user.component';
 import { UserlistComponent } from './userlist/userlist.component';
 import { UseritemComponent } from './userlist/useritem/useritem.component';
 import { SharesModule } from '../shares/shares.module';
+// import { MyTestService } from './my-test-service';
+
 
 
 @NgModule( {
@@ -11,7 +13,7 @@ import { SharesModule } from '../shares/shares.module';
   exports: [
     UserComponent
   ],
-  providers: [],
+  // providers: [MyTestService], // bevopr provideIn innerhalb des Injectable zur Verfügung stand
   imports     : [
     CommonModule, SharesModule
   ]

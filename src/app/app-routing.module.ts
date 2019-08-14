@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { DashComponent } from './dash/dash.component';
 import { UserComponent } from './user/user.component';
+import { UserDetailComponent } from './user/user-detail/user-detail.component';
 
 
 const routes: Routes = [
@@ -10,6 +11,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'dash', component: DashComponent},
   {path: 'user', component: UserComponent},
+  {path: 'user/:id', component: UserDetailComponent},
   {path: 'lazy', loadChildren: () => import('./lazy/lazy.module')
       .then( m => m.LazyModule )},
   {path: '**', redirectTo: 'home'},

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
+import { MyTestService } from '../my-test-service';
 /*
 ng generate component userlist --skip-tests
  */
@@ -19,7 +20,7 @@ export class UserlistComponent implements OnInit {
 
   selectedUser: User;
 
-  constructor() { }
+  constructor( public $myService: MyTestService ) { }
 
   ngOnInit() {
     this.selectedUser = this.users[0];
@@ -35,5 +36,6 @@ export class UserlistComponent implements OnInit {
 
   delLast() {
     this.users.pop();
+    this.$myService.wert = 'deleted user!';
   }
 }

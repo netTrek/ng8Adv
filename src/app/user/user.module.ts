@@ -6,12 +6,12 @@ import { UseritemComponent } from './userlist/useritem/useritem.component';
 import { SharesModule } from '../shares/shares.module';
 
 
-
 @NgModule( {
   declarations: [ UserComponent, UserlistComponent, UseritemComponent ],
   exports: [
     UserComponent
   ],
+  providers: [],
   imports     : [
     CommonModule, SharesModule
   ]

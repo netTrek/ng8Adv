@@ -27,7 +27,7 @@ export class UserService {
                        // }
                        next => {
                          this.users = next;
-                         this.init();
+                         this.preselectFirst();
                        }
                      );
     // sub.unsubscribe(); // canceled xhr request
@@ -67,7 +67,7 @@ export class UserService {
     this.preselectFirst();
   }
   private preselectFirst() {
-    if ( this.users.length > 0 || ! this.selectedUser ) {
+    if ( this.users.length > 0 ) {
       this.setSelectedUser ( this.users [ 0 ] );
     }
   }

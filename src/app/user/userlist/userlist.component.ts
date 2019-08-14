@@ -23,4 +23,12 @@ export class UserlistComponent implements OnInit {
     this.$user.delLastUsr ();
     this.$myService.wert = 'deleted user!';
   }
+
+  createDummyUsr() {
+    this.$user.create( {
+      firstname: 'saban',
+      lastname: 'uenlue',
+      age: 44
+    });
+  }
 }

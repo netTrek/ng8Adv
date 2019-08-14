@@ -9,16 +9,30 @@ export class UserService {
   users: User[] = [];
   selectedUser: User;
   constructor( private $http: HttpClient ) {
-    const sub = $http.get<User[]>( 'http://localhost:3000/users' )
-      .subscribe(
-        // ( naechsterWert: User[] ) => {
-        //   this.users = naechsterWert;
-        // }
-        next => this.users = next
-      );
-    // sub.unsubscribe(); // canceled xhr request
-    this.init();
+    this.getUsers();
   }
+  create( usr: User ) {
+    this.$http.post( 'http://localhost:3000/users', usr )
+        .subscribe(
+          value => {
+            this.getUsers();
+          }
+        );
+  }
+  getUsers() {
+    const sub = this.$http.get<User[]>( 'http://localhost:3000/users' )
+                     .subscribe(
+                       // ( naechsterWert: User[] ) => {
+                       //   this.users = naechsterWert;
+                       // }
+                       next => {
+                         this.users = next;
+                         this.init();
+                       }
+                     );
+    // sub.unsubscribe(); // canceled xhr request
+  }
+
   setSelectedUser( selectedUser: User ) {
     if ( this.selectedUser === selectedUser ) {
       this.selectedUser = undefined;
@@ -31,11 +45,15 @@ export class UserService {
     if ( usr === this.selectedUser ) {
       this.selectedUser = undefined;
     }
+    this.delUser ( usr );
   }
+
   delUsr( user: User ): User | boolean {
     const ind = this.users.indexOf ( user );
     if ( ind !== - 1 ) {
-      return this.users.splice( ind, 1 ) [0];
+      const usr = this.users.splice( ind, 1 ) [0];
+      this.delUser ( usr );
+      return usr;
     }
     return false;
   }
@@ -49,8 +67,17 @@ export class UserService {
     this.preselectFirst();
   }
   private preselectFirst() {
-    if ( this.users.length > 0 ) {
+    if ( this.users.length > 0 || ! this.selectedUser ) {
       this.setSelectedUser ( this.users [ 0 ] );
     }
+  }
+
+  private delUser( usr ) {
+    this.$http.delete ( `http://localhost:3000/users/${usr.id}` )
+        .subscribe (
+          value => {
+            this.getUsers ();
+          }
+        );
   }
 }

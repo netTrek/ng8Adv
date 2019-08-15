@@ -1,7 +1,40 @@
-<form action="">
-  <input type="text" placeholder="name">
-  <input type="mail" placeholder="mail@mail.de">
-  <textarea placeholder="nachricht"></textarea>
-  <button type="rest">rest</button>
-  <button type="submit">submit</button>
+<form #myForm="ngForm" (ngSubmit)="send ( myForm.value )">
+  <input type="text"
+         placeholder="name"
+         name="name"
+         #name="ngModel"
+         ngModel
+  >
+  <span ngModelGroup="credentials">
+    <input type="mail"
+           placeholder="mail@mail.de"
+           name="mail"
+           #mail="ngModel"
+           ngModel
+           required email
+    >
+    <!--
+    <div>wurde schon mal berührt {{mail.touched}}</div>
+    <div>wurde schon bearbeitet {{mail.dirty}}</div>
+    <div>wurde schon bearbeitet {{mail.errors | json}}</div>
+    -->
+    <div class="error" *ngIf="mail.touched && mail.errors">
+      <span *ngIf="mail.errors.required; else emailErr">
+        Bitte geben Sie eine E-Mail Adresse ein!
+      </span>
+      <ng-template #emailErr>
+        <span>Die Eingegebene E-Mail Adresse ist nicht valide!</span>
+      </ng-template>
+    </div>
+    <input type="password"
+           placeholder="password"
+           name="password"
+           #password="ngModel"
+           ngModel
+    >
+  </span>
+  <button type="reset" [disabled]="myForm.pristine">reset</button>
+  <button type="submit" [disabled]="myForm.invalid">submit</button>
 </form>
+<p>{{myForm.value | json}}</p>
+<p>{{myForm.valid}}</p>

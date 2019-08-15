@@ -1,10 +1,23 @@
 input, textarea {
   width: 100%;
   margin-bottom: 3px;
+  &.ng-touched {
+    &.ng-invalid {
+      // color: red;
+      border-color: red;
+      padding: 1px;
+    }
+  }
 }
 form {
   padding-right: 5px;
 }
 button[type='submit'] {
   font-size: large;
+}
+
+div.error {
+  font-size: smaller;
+  color: red;
+  text-decoration: underline;
 }

@@ -1,0 +1,20 @@
+// entfernt attribute im selector
+/*
+::ng-deep h1 {
+  color: red;
+}
+*/
+
+:host {
+  color: blue;
+  background-color: aliceblue;
+  display: block;
+}
+
+h1 {
+  color: red;
+}
+
+button {
+  background-color: rgba(255, 0, 0, 0.3);
+}

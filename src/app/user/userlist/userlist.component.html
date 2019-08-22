@@ -33,7 +33,9 @@ ein Template
 
 <div></div>
 <button (click)="addUser()">add new user</button>
-<button dvzDanger [disabled]="!selectedUsr"
+<button
+  [dvzDanger]="'Willst du ' + selectedUsr?.firstname + ' wirklich löschen'"
+  [disabled]="!selectedUsr"
     (confirmed)="delSelected()">
     remove selected user</button>
 <button dvzDanger [disabled]="userList.length === 0"

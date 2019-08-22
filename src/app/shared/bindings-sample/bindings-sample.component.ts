@@ -10,16 +10,22 @@ export class BindingsSampleComponent implements OnInit {
   berechneterWert = 0;
   width = 320;
   height = 240;
+  html = `hello <strong>world</strong> <script >alert('hwllo')</script>`;
+  color = 'red';
 
   constructor() {
   }
 
   ngOnInit() {
     this.berechneterWert = this.rechne ( 1, 2 );
-    // window.setInterval( () => {
-    //   this.height += 20;
-    //   this.width += 20;
-    // }, 1000 );
+    let intervalID: number;
+    intervalID = window.setInterval( () => {
+      this.height += 20;
+      this.width += 20;
+      if ( this.width > 360 ) {
+        window.clearInterval( intervalID );
+      }
+    }, 1000 );
   }
 
   methode( msg: string = '' ) {

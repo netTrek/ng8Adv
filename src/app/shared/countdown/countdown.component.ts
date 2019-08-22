@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CountdownComponent implements OnInit {
 
+  width = 100;
+
   constructor() { }
 
   ngOnInit() {
+    let intervalID: number;
+    intervalID = window.setInterval( () => {
+      this.width -= 10;
+      if ( this.width === 0 ) {
+        window.clearInterval( intervalID );
+      }
+    }, 1000 );
   }
 
 }

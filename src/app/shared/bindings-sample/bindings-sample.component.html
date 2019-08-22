@@ -1,4 +1,10 @@
 <img src="http://placekitten.com/{{width}}/{{height}}" alt="cat">
+<div [style.width.px]="width" style="background-color: green;">hello</div>
+<!--<div [style.width]="width+'px'" style="background-color: green;">hello</div>-->
+<p [style.color]="color" [attr.aria-label]="berechneterWert">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias culpa deleniti exercitationem harum natus non quo! Aspernatur atque cumque dolore id nihil perspiciatis praesentium provident quasi, quia saepe, sapiente voluptate.</p>
+<p [innerHTML]="html" [attr.aria-label]="berechneterWert"></p>
+<p>{{html}}</p>
+<p [innerText]="berechneterWert"></p>
 <p>berechneter wert {{berechneterWert}}</p>
 <p>ohne Parameter {{methode( )}}</p>
 <p>mit gebunden Parameter {{methode( wert )}}</p>

@@ -34,4 +34,41 @@ export class UserlistComponent implements OnInit {
     this.selectedInd = val;
     console.log ( event );
   }
+
+  addUser() {
+    const age = Date.now ();
+    this.userList.push (
+      {
+        firstname: `saban ${age}`,
+        lastname : `uenlue ${age}`,
+        age
+      }
+    );
+  }
+
+  delSelected() {
+    if ( this.selectedUsr ) {
+      this.delUsr ( this.selectedUsr );
+    }
+  }
+
+  delLast() {
+    const lng = this.userList.length;
+    if ( lng > 0 ) {
+      this.delUsr ( this.userList [ lng - 1 ] );
+    }
+  }
+
+  private delUsr( usr: User ) {
+    const ind = this.userList
+                    .indexOf ( usr );
+    if ( ind !== - 1 ) {
+      if ( usr === this.selectedUsr ) {
+        this.selectedUsr = undefined;
+      }
+      this.userList
+          .splice ( ind, 1 );
+    }
+
+  }
 }

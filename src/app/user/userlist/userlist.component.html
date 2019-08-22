@@ -1,4 +1,16 @@
 <!--
+
+<ul>
+  <li
+    *ngFor="let interator of ['saban','peter','uenlue']; index as i; first as f, last as l; even as e; odd as o" [class.even]="e" [class.odd]="o" >
+    {{i}} {{interator}} {{f}} {{l}} {{e}} {{o}}
+  </li>
+</ul>
+
+-->
+
+
+<!--
 compiler macht aus *
 <h1 *ngIf="selectedUsr">selected {{selectedUsr | json}}</h1>
 ein Template
@@ -13,6 +25,22 @@ ein Template
 </ng-template>
 
 <dvz-user-item
+  *ngFor="let user of userList; even as e; odd as o"
+  [class.even]="e" [class.odd]="o"
+  [user]="user"
+  [selected]="selectedUsr === user"
+  (selectUsr)="setSelectedUsr($event)"></dvz-user-item>
+
+<button (click)="addUser()">add new user</button>
+<button [disabled]="!selectedUsr"
+    (click)="delSelected()">
+    remove selected user</button>
+<button [disabled]="userList.length === 0"
+    (click)="delLast()">
+    remove last user</button>
+<!--
+
+<dvz-user-item
   [user]="userList[0]"
   [selected]="selectedUsr === userList[0]"
   (selectUsr)="setSelectedUsr($event)"></dvz-user-item>
@@ -24,3 +52,4 @@ ein Template
   [user]="userList[2]"
   [selected]="selectedUsr === userList[2]"
   (selectUsr)="setSelectedUsr($event)"></dvz-user-item>
+-->

@@ -1,4 +1,17 @@
-<h1>selected {{selectedUsr | json}}</h1>
+<!--
+compiler macht aus *
+<h1 *ngIf="selectedUsr">selected {{selectedUsr | json}}</h1>
+ein Template
+<ng-template [ngIf]="selectedUsr">
+  <h1>selected {{selectedUsr | json}}</h1>
+</ng-template>
+-->
+
+<h1 *ngIf="selectedUsr; else elseRef">selected {{selectedUsr | json}}</h1>
+<ng-template #elseRef>
+  <h1>No user selected</h1>
+</ng-template>
+
 <dvz-user-item
   [user]="userList[0]"
   [selected]="selectedUsr === userList[0]"

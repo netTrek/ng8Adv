@@ -12,6 +12,7 @@ import { SharedModule } from '../shared/shared.module';
   exports     : [
     UserComponent
   ],
+  // providers: [SabanService, PeterService],
   imports     : [
     CommonModule, SharedModule
   ]

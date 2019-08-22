@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { UserService } from './user.service';
 
 @Component ( {
   selector   : 'dvz-user',
@@ -11,7 +12,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 export class UserComponent implements OnInit {
   username = 'saban ünlü';
 
-  constructor() {
+  constructor( public  $user: UserService ) {
+    console.log ( $user );
   }
 
   ngOnInit() {

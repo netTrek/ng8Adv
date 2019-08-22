@@ -13,6 +13,7 @@ import {
 import { User } from '../../user';
 import { debug } from 'util';
 import { Subscription } from 'rxjs';
+import { UserService } from '../../user.service';
 
 @Component ( {
   selector   : 'dvz-user-item',
@@ -37,11 +38,13 @@ export class UserItemComponent implements OnInit, OnChanges, OnDestroy {
   private $selected = false;
   private sub: Subscription;
 
-  constructor() {
+  constructor( private $user: UserService ) {
   }
 
   ngOnInit() {
-    this.sub = this.selectUsr.subscribe( next => console.log ( 'select', next ));
+    this.sub = this.selectUsr.subscribe( (next: User) => {
+      this.$user.name = next.firstname;
+    } );
   }
 
   @HostListener ( 'click' )

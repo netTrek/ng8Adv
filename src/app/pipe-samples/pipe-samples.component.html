@@ -1,0 +1,30 @@
+<h1>String</h1>
+<ul>
+  <li>{{str}}</li>
+  <li>{{str | uppercase}}</li>
+  <li>{{str | reverse }}</li>
+  <li>{{str | reverse : 'hello ' }}</li>
+</ul>
+<h1>Date</h1>
+<ul>
+  <li>{{now}}</li>
+  <li>{{now | date}}</li>
+  <li>{{now | date : 'long'}}</li>
+  <li>{{now | date : 'long' : '+0200' : 'de'}}</li>
+  <li>{{now | date : 'long' : '+0900'}}</li>
+  <li>{{now | date : 'yyyy/mm'}}</li>
+</ul>
+<h1>Number</h1>
+<ul>
+  <li>{{num}}</li>
+  <li>{{num | number}}</li>
+  <li>{{num | number : '3.5-8'}}</li>
+  <li>{{num | number : '3.5-8' : 'de' }}</li>
+  <li>{{122 | number : '3.5-8'}}</li>
+</ul>
+<h1>Currency</h1>
+<ul>
+  <li>{{price}}</li>
+  <li>{{price | currency}}</li>
+  <li>{{price | currency : 'EUR'}}</li>
+</ul>

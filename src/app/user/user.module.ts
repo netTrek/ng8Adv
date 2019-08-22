@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { UserComponent } from './user.component';
 import { UserlistComponent } from './userlist/userlist.component';
 import { UserItemComponent } from './userlist/user-item/user-item.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -12,7 +13,7 @@ import { UserItemComponent } from './userlist/user-item/user-item.component';
     UserComponent
   ],
   imports     : [
-    CommonModule
+    CommonModule, SharedModule
   ]
 })
 export class UserModule { }

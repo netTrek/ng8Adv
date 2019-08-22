@@ -26,17 +26,18 @@ ein Template
 
 <dvz-user-item
   *ngFor="let user of userList; even as e; odd as o"
-  [class.even]="e" [class.odd]="o"
+  [ngClass]="{even: e, odd: o}"
   [user]="user"
   [selected]="selectedUsr === user"
   (selectUsr)="setSelectedUsr($event)"></dvz-user-item>
 
+<div></div>
 <button (click)="addUser()">add new user</button>
-<button [disabled]="!selectedUsr"
-    (click)="delSelected()">
+<button dvzDanger [disabled]="!selectedUsr"
+    (confirmed)="delSelected()">
     remove selected user</button>
-<button [disabled]="userList.length === 0"
-    (click)="delLast()">
+<button dvzDanger [disabled]="userList.length === 0"
+    (confirmed)="delLast()">
     remove last user</button>
 <!--
 

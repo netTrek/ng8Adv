@@ -1,0 +1,13 @@
+<h1>selected {{selectedInd}}</h1>
+<dvz-user-item
+  [user]="userList[0]"
+  [class.selected]="selectedInd === 1"
+  (click)="setSelectedInd(1, $event)"></dvz-user-item>
+<dvz-user-item
+  [user]="userList[1]"
+  [class.selected]="selectedInd === 2"
+  (click)="setSelectedInd(2)"></dvz-user-item>
+<dvz-user-item
+  [user]="userList[2]"
+  [class.selected]="selectedInd === 3"
+  (click)="setSelectedInd(3)"></dvz-user-item>

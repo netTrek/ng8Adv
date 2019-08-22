@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  &:hover {
+    color: red;
+    cursor: pointer;
+  }
+  &.selected {
+    background-color: #ffc2af;
+  }
+}

@@ -18,7 +18,7 @@ export class UserComponent implements OnInit, OnDestroy {
   constructor( public  $user: UserService ) {
     console.log ( $user );
     this.sub = $user.name$.subscribe(
-      console.log
+      // console.log
     );
   }
 

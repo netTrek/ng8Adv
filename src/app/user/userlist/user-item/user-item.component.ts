@@ -28,7 +28,7 @@ export class UserItemComponent implements OnInit, OnChanges, OnDestroy {
   @Input ()
   @HostBinding ( 'class.selected' )
   set selected( value: boolean ) {
-    console.log ( 'crr', this.$selected, 'next', value );
+    // console.log ( 'crr', this.$selected, 'next', value );
     this.$selected = value;
   }
 
@@ -56,7 +56,7 @@ export class UserItemComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnChanges( changes: SimpleChanges ): void {
     if ( changes.selected ) {
-      console.log ( changes.selected ); // SimpleChange {previousValue: undefined, currentValue: false, firstChange: true}
+      // console.log ( changes.selected ); // SimpleChange {previousValue: undefined, currentValue: false, firstChange: true}
     }
   }
 

@@ -13,6 +13,7 @@ import { ReversePipe } from './shared/reverse.pipe';
 import { RxjsSamplesModule } from './rxjs-samples/rxjs-samples.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppTokenInterceptorService } from './app-token-interceptor.service';
+import { HomeModule } from './home/home.module';
 registerLocaleData( localeDE );
 
 @NgModule({
@@ -25,7 +26,8 @@ registerLocaleData( localeDE );
     UserModule,
     SharedModule,
     PipeSamplesModule,
-    RxjsSamplesModule
+    RxjsSamplesModule,
+    HomeModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'de'},

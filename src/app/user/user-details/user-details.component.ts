@@ -24,12 +24,15 @@ export class UserDetailsComponent implements OnInit, OnDestroy {
       this.$route.data
           .pipe ( map ( value => value.company ) )
           .subscribe ( company => this.company = company ),
-      this.$route.paramMap
-          .pipe (
-            map ( paramMap => Number ( paramMap.get ( 'id' ) ) ),
-            switchMap ( id => this.$user.getUser ( id ) )
-          )
+      this.$route.data
+          .pipe ( map ( value => value.user ) )
           .subscribe ( user => this.user = user )
+      // this.$route.paramMap
+      //     .pipe (
+      //       map ( paramMap => Number ( paramMap.get ( 'id' ) ) ),
+      //       switchMap ( id => this.$user.getUser ( id ) )
+      //     )
+      //     .subscribe ( user => this.user = user )
     );
   }
 

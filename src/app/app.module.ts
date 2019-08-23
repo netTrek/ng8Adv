@@ -14,6 +14,7 @@ import { RxjsSamplesModule } from './rxjs-samples/rxjs-samples.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppTokenInterceptorService } from './app-token-interceptor.service';
 import { HomeModule } from './home/home.module';
+import { ContactModule } from './contact/contact.module';
 registerLocaleData( localeDE );
 
 @NgModule({
@@ -27,7 +28,8 @@ registerLocaleData( localeDE );
     SharedModule,
     PipeSamplesModule,
     RxjsSamplesModule,
-    HomeModule
+    HomeModule,
+    ContactModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'de'},

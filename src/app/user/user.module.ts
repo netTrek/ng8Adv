@@ -6,6 +6,7 @@ import { UserItemComponent } from './userlist/user-item/user-item.component';
 import { SharedModule } from '../shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { UserDetailsComponent } from './user-details/user-details.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule( {
   declarations: [ UserComponent, UserlistComponent, UserItemComponent, UserDetailsComponent ],
@@ -14,8 +15,11 @@ import { UserDetailsComponent } from './user-details/user-details.component';
     UserDetailsComponent
   ],
   // providers: [SabanService, PeterService],
-  imports     : [
-    CommonModule, SharedModule, HttpClientModule
+  imports: [
+    CommonModule,
+    SharedModule,
+    HttpClientModule,
+    RouterModule
   ]
 })
 export class UserModule { }

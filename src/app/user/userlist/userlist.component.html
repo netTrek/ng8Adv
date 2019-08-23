@@ -19,19 +19,21 @@ ein Template
 </ng-template>
 -->
 
-<h1 *ngIf="selectedUsr; else elseRef">selected {{selectedUsr | json}}</h1>
+<h4 *ngIf="selectedUsr; else elseRef">selected {{selectedUsr | json}}</h4>
 <ng-template #elseRef>
-  <h1>No user selected</h1>
+  <h4>No user selected</h4>
 </ng-template>
 
-<dvz-user-item
-  *ngFor="let user of $user.userList; even as e; odd as o"
-  [ngClass]="{even: e, odd: o}"
-  [user]="user"
-  [selected]="selectedUsr?.id === user?.id"
-  (selectUsr)="setSelectedUsr($event)"></dvz-user-item>
+<ng-container *ngFor="let user of $user.userList; even as e; odd as o">
+  <button class="detail" [routerLink]="[user?.id]">details</button>
+  <dvz-user-item
+    [ngClass]="{even: e, odd: o}"
+    [user]="user"
+    [selected]="selectedUsr?.id === user?.id"
+    (selectUsr)="setSelectedUsr($event)"></dvz-user-item>
+</ng-container>
 
-<div></div>
+
 <button (click)="addUser()">add new user</button>
 <button
   [dvzDanger]="'Willst du ' + selectedUsr?.firstname + ' wirklich löschen'"

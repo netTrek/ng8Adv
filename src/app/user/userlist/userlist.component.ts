@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
+import { UserService } from '../user.service';
 
 @Component ( {
   selector   : 'dvz-userlist',
@@ -7,15 +8,10 @@ import { User } from '../user';
   styleUrls  : [ './userlist.component.scss' ]
 } )
 export class UserlistComponent implements OnInit {
-  selectedInd: number;
-  userList: User[] = [
-    { firstname: 'Saban', lastname: 'Ünlü', age: 44 },
-    { firstname: 'Heike', lastname: 'Maier', age: 43 },
-    { firstname: 'Peter', lastname: 'Müller', age: 42 }
-  ];
+
   selectedUsr: User;
 
-  constructor() {
+  constructor( public $user: UserService ) {
   }
 
   ngOnInit() {
@@ -29,46 +25,20 @@ export class UserlistComponent implements OnInit {
     }
   }
 
-  setSelectedInd( val: number,
-                  event?: MouseEvent ) {
-    this.selectedInd = val;
-    console.log ( event );
+  delSelected() {
+    if ( this.selectedUsr ) {
+      this.$user.delUsr ( this.selectedUsr );
+      this.selectedUsr = undefined;
+    }
   }
 
   addUser() {
-    const age = Date.now ();
-    this.userList.push (
-      {
-        firstname: `saban ${age}`,
-        lastname : `uenlue ${age}`,
-        age
-      }
-    );
-  }
-
-  delSelected() {
-    if ( this.selectedUsr ) {
-      this.delUsr ( this.selectedUsr );
-    }
+    this.$user.addUser ();
   }
 
   delLast() {
-    const lng = this.userList.length;
-    if ( lng > 0 ) {
-      this.delUsr ( this.userList [ lng - 1 ] );
+    if ( this.selectedUsr === this.$user.delLast () ) {
+      this.selectedUsr = undefined;
     }
-  }
-
-  private delUsr( usr: User ) {
-    const ind = this.userList
-                    .indexOf ( usr );
-    if ( ind !== - 1 ) {
-      if ( usr === this.selectedUsr ) {
-        this.selectedUsr = undefined;
-      }
-      this.userList
-          .splice ( ind, 1 );
-    }
-
   }
 }

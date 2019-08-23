@@ -31,6 +31,7 @@ export class UserItemComponent implements OnInit, OnChanges, OnDestroy {
     console.log ( 'crr', this.$selected, 'next', value );
     this.$selected = value;
   }
+
   get selected(): boolean {
     return this.$selected;
   }
@@ -42,8 +43,9 @@ export class UserItemComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnInit() {
-    this.sub = this.selectUsr.subscribe( (next: User) => {
+    this.sub = this.selectUsr.subscribe ( ( next: User ) => {
       this.$user.name = next.firstname;
+      this.$user.name$.next ( '****' + next.firstname );
     } );
   }
 
@@ -59,7 +61,7 @@ export class UserItemComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
+    this.sub.unsubscribe ();
     this.sub = undefined;
   }
 }

@@ -12,6 +12,7 @@ export class UserService {
   name                           = 'saban ünlü';
   name$: BehaviorSubject<string> = new BehaviorSubject ( '****saban ünlü' );
   userList: User[]               = [];
+  token = 'netTrek'; // steht erst nach Login bereit
 
   constructor( private $http: HttpClient ) {
   }

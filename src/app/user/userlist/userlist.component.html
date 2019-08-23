@@ -28,7 +28,7 @@ ein Template
   *ngFor="let user of $user.userList; even as e; odd as o"
   [ngClass]="{even: e, odd: o}"
   [user]="user"
-  [selected]="selectedUsr === user"
+  [selected]="selectedUsr?.id === user?.id"
   (selectUsr)="setSelectedUsr($event)"></dvz-user-item>
 
 <div></div>

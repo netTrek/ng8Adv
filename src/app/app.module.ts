@@ -11,6 +11,8 @@ import localeDE from '@angular/common/locales/de';
 import { registerLocaleData } from '@angular/common';
 import { ReversePipe } from './shared/reverse.pipe';
 import { RxjsSamplesModule } from './rxjs-samples/rxjs-samples.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AppTokenInterceptorService } from './app-token-interceptor.service';
 registerLocaleData( localeDE );
 
 @NgModule({
@@ -27,6 +29,7 @@ registerLocaleData( localeDE );
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'de'},
+    {provide: HTTP_INTERCEPTORS, useClass: AppTokenInterceptorService, multi: true},
     ReversePipe
   ],
   bootstrap: [AppComponent]

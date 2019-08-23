@@ -1,25 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
+import { UserService } from '../user.service';
+import { User } from '../user';
+import { Subscription } from 'rxjs';
 
 @Component ( {
   selector   : 'dvz-user-details',
   templateUrl: './user-details.component.html',
   styleUrls  : [ './user-details.component.scss' ]
 } )
-export class UserDetailsComponent implements OnInit {
+export class UserDetailsComponent implements OnInit, OnDestroy {
 
-  id: number;
+  user: User;
+  private sub: Subscription;
 
-  constructor( private $route: ActivatedRoute ) {
+  constructor( private $route: ActivatedRoute, private $user: UserService ) {
   }
 
   ngOnInit() {
-    this.$route.paramMap
+    this.sub = this.$route.paramMap
         .pipe (
-          map ( paramMap => paramMap.get ( 'id' ) )
+          map ( paramMap => Number (paramMap.get ( 'id' ) ) ),
+          switchMap( id => this.$user.getUser( id ))
         )
-        .subscribe ( value => this.id = Number ( value ) );
+        .subscribe ( user => this.user = user );
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+    this.sub = undefined;
   }
 
 }

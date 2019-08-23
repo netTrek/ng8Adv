@@ -17,6 +17,10 @@ export class UserService {
   constructor( private $http: HttpClient ) {
   }
 
+  getUser( id: number ): Observable<User> {
+    return this.$http.get<User>( `${environment.endpoint}/${id}`);
+  }
+
   getUsers(): Promise<User[]> {
     return this.$http.get<User[]> ( environment.endpoint )
                .pipe (

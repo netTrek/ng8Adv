@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'user', component: UserComponent },
-  { path: 'user/:id', component: UserDetailsComponent},
+  { path: 'user/:id', component: UserDetailsComponent, data: {company: 'dvz'}},
   { path: 'dash', loadChildren: () => import ('./dash/dash.module')
       .then( m => m.DashModule ) },
   { path: '**', redirectTo: 'home' } // Terminierung 404

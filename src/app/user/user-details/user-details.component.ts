@@ -13,23 +13,30 @@ import { Subscription } from 'rxjs';
 export class UserDetailsComponent implements OnInit, OnDestroy {
 
   user: User;
-  private sub: Subscription;
+  company: string;
+  private sub: Subscription[] = [];
 
   constructor( private $route: ActivatedRoute, private $user: UserService ) {
   }
 
   ngOnInit() {
-    this.sub = this.$route.paramMap
-        .pipe (
-          map ( paramMap => Number (paramMap.get ( 'id' ) ) ),
-          switchMap( id => this.$user.getUser( id ))
-        )
-        .subscribe ( user => this.user = user );
+    this.sub.push (
+      this.$route.data
+          .pipe ( map ( value => value.company ) )
+          .subscribe ( company => this.company = company ),
+      this.$route.paramMap
+          .pipe (
+            map ( paramMap => Number ( paramMap.get ( 'id' ) ) ),
+            switchMap ( id => this.$user.getUser ( id ) )
+          )
+          .subscribe ( user => this.user = user )
+    );
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe();
-    this.sub = undefined;
+    while ( this.sub.length > 0 ) {
+      this.sub.pop().unsubscribe();
+    }
   }
 
 }

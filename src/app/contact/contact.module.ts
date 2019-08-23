@@ -4,6 +4,7 @@ import { ContactComponent } from './contact.component';
 import { MapComponent } from './map/map.component';
 import { FormComponent } from './form/form.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -11,7 +12,8 @@ import { RouterModule } from '@angular/router';
   declarations: [ContactComponent, MapComponent, FormComponent],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   exports: [ContactComponent, MapComponent, FormComponent]
 })

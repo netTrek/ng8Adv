@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 
-@Component({
-  selector: 'dvz-form',
+@Component ( {
+  selector   : 'dvz-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
-})
+  styleUrls  : [ './form.component.scss' ]
+} )
 export class FormComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  send( value: any ) {
+    console.log ( value );
+  }
 }

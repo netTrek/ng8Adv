@@ -1,5 +1,10 @@
 <h1>{{$user.name}}</h1>
 <h1>{{$user.name$ | async}}</h1>
+
+<ng-container *ngIf="$user.name$ | async as myName">
+  <h1>name via alias {{myName}}</h1>
+</ng-container>
+
 <dvz-userlist></dvz-userlist>
 <!--
 <h1>

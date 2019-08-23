@@ -41,6 +41,9 @@ ein Template
 <button dvzDanger [disabled]="$user.userList.length === 0"
     (confirmed)="delLast()">
     remove last user</button>
+<button
+  [disabled]="!selectedUsr" (click)="updateSelectedUsr()">
+    update selected Usr</button>
 <!--
 
 <dvz-user-item

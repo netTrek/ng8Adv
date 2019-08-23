@@ -80,13 +80,13 @@
     },
     {
       "id": 14,
-      "firstname": "Sophie",
+      "firstname": "saban",
       "lastname": "Ford",
       "age": 31
     },
     {
       "id": 15,
-      "firstname": "Serenity",
+      "firstname": "saban",
       "lastname": "Molligan",
       "age": 32
     },
@@ -95,18 +95,6 @@
       "firstname": "Makayla",
       "lastname": "Ford",
       "age": 33
-    },
-    {
-      "id": 17,
-      "firstname": "Melanie",
-      "lastname": "Sherlock",
-      "age": 34
-    },
-    {
-      "id": 19,
-      "firstname": "Saban",
-      "lastname": "Ünlü",
-      "age": 44
     }
   ]
 }

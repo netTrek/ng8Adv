@@ -15,6 +15,7 @@ export class UserlistComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.$user.getUsers(); // .then( console.log );
   }
 
   setSelectedUsr( user: User ) {
@@ -33,12 +34,21 @@ export class UserlistComponent implements OnInit {
   }
 
   addUser() {
-    this.$user.addUser ();
+    this.$user.createUser ();
   }
 
   delLast() {
     if ( this.selectedUsr === this.$user.delLast () ) {
       this.selectedUsr = undefined;
+    }
+  }
+
+  updateSelectedUsr() {
+    if ( this.selectedUsr ) {
+      this.$user.updateUsr(
+        {...this.selectedUsr,
+          firstname: 'saban'}
+      );
     }
   }
 }

@@ -1,3 +1,7 @@
+import { baseEnviroment } from './base-enviroments';
+
 export const environment = {
-  production: true
+  ... baseEnviroment,
+  production: true,
+  endpoint: '/api/user'
 };

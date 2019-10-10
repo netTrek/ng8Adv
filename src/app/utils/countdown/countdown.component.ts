@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component ( {
   selector   : 'dvz-countdown',
   templateUrl: './countdown.component.html',
   styleUrls  : [ './countdown.component.scss' ]
 } )
-export class CountdownComponent implements OnInit {
+export class CountdownComponent implements OnInit, OnDestroy {
 
   width = 100;
   private intervalID: number;
@@ -14,6 +14,11 @@ export class CountdownComponent implements OnInit {
   ngOnInit() {
     this.startInterval ();
   }
+
+  ngOnDestroy(): void {
+    this.stopInterval ();
+  }
+
   private startInterval() {
     this.intervalID = window.setInterval ( () => {
       this.width -= 1;

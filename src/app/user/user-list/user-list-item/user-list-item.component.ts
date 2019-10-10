@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { User } from '../../user';
 
 @Component ( {
@@ -6,10 +6,17 @@ import { User } from '../../user';
   templateUrl: './user-list-item.component.html',
   styleUrls  : [ './user-list-item.component.scss' ]
 } )
-export class UserListItemComponent implements OnInit {
+export class UserListItemComponent implements OnInit, OnChanges {
 
-  @Input () user: User;
-  @Output () selectUsr: EventEmitter<User> = new EventEmitter();
+  @Input () user: User                     = { name: '', age: 1 };
+  @Input () selectedUsr: User;
+  @Output () selectUsr: EventEmitter<User> = new EventEmitter ();
+
+  /**
+   * <dvz-user-list-item [class.selected]="isSelected">
+   */
+  @HostBinding ('class.selected')
+  isSelected: boolean;
 
   constructor() {
   }
@@ -17,7 +24,20 @@ export class UserListItemComponent implements OnInit {
   ngOnInit() {
   }
 
+  @HostListener ( 'click' )
   triggerEvent() {
-    this.selectUsr.emit( this.user );
+    this.selectUsr.emit ( this.user );
+  }
+  /*
+  @HostListener ( 'mouseenter', [ '$event' ] )
+  mouseMove( event: MouseEvent ) {
+    console.log ( event );
+  }
+  */
+
+  ngOnChanges( changes: SimpleChanges ): void {
+    if ( changes.hasOwnProperty ( 'selectedUsr' ) && !! this.user ) {
+      this.isSelected = this.user === changes.selectedUsr.currentValue;
+    }
   }
 }

@@ -1,22 +1,15 @@
-<h1>{{name}}</h1>
+<h1>User List</h1>
+<dvz-user-list></dvz-user-list>
 <!--
 
-<h1>{{getName()}}</h1>
--->
+Beispiele für Klassen Bindung
 
-<button (click)="changeName()">klick mich</button>
-<!--
+<div class="red">red</div>
+<div class="green">green</div>
+<div class="saban frank peter" [class]="selectedClasses"
+     (click)="selectedClasses='green'"
+>red or green</div>
+<div [class.selected]="isSelected"
+  (click)="isSelected = !isSelected">{{isSelected}}</div>
 
-<span [style.width]="width+'px'">Hello</span>
--->
-<span [style.width.px]="width">Hello</span>
-
-<!--
-<img src="http://placekitten.com/{{width}}/{{height}}" width="{{width}}" height="{{height}}" alt="cat">
-<img src="http://placekitten.com/{{width}}/{{height}}" [width]="width" [height]="height" [attr.alt]="'myCatName ' + catname">
--->
-
-<div [innerHTML]="html"></div>
-<!--
-<div>{{html}}</div>
 -->

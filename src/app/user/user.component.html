@@ -1,5 +1,9 @@
-<!--<h1>{{name}}</h1>-->
+<h1>{{name}}</h1>
+<!--
+
 <h1>{{getName()}}</h1>
+-->
+
 <button (click)="changeName()">klick mich</button>
 <!--
 
@@ -10,4 +14,9 @@
 <!--
 <img src="http://placekitten.com/{{width}}/{{height}}" width="{{width}}" height="{{height}}" alt="cat">
 <img src="http://placekitten.com/{{width}}/{{height}}" [width]="width" [height]="height" [attr.alt]="'myCatName ' + catname">
+-->
+
+<div [innerHTML]="html"></div>
+<!--
+<div>{{html}}</div>
 -->

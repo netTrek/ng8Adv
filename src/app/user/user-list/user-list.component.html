@@ -1,14 +1,16 @@
 
-<dvz-user-list-item *ngFor="let user of userList"
+<dvz-user-list-item *ngFor="let user of userList; even as e; odd as o"
   [user]="user" [selectedUsr]="selectedUser"
+  [ngClass]="{even: e, odd: o}"
   (selectUsr)="selectUser($event)">
 </dvz-user-list-item>
 
-<button *ngIf="selectedUser" (click)="delSelected()">
+<button *ngIf="selectedUser" (confirmed)="delSelected()"
+        dvzDangerBtn="{{selectedUser.name}} wirklich löschen?">
   [-] delete {{selectedUser.name}}?
 </button>
-<button (click)="delInd( 0 )">[-] del First</button>
-<button (click)="delInd( userList.length-1 )">[-] del Last</button>
+<button (confirmed)="delInd( 0 )" dvzDangerBtn="ersten user wirklich löschen">[-] del First</button>
+<button (confirmed)="delInd( userList.length-1 )" dvzDangerBtn>[-] del Last</button>
 
 <ng-container *ngIf="showForm; else showNewBtn">
   <br>

@@ -1,5 +1,13 @@
 <!--<h1>{{name}}</h1>-->
 <h1>{{getName()}}</h1>
 <button (click)="changeName()">klick mich</button>
+<!--
 
+<span [style.width]="width+'px'">Hello</span>
+-->
+<span [style.width.px]="width">Hello</span>
+
+<!--
 <img src="http://placekitten.com/{{width}}/{{height}}" width="{{width}}" height="{{height}}" alt="cat">
+<img src="http://placekitten.com/{{width}}/{{height}}" [width]="width" [height]="height" [attr.alt]="'myCatName ' + catname">
+-->

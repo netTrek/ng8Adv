@@ -14,11 +14,13 @@ export class UserComponent implements OnInit {
   name = 'Saban Ünlü';
   width = 100;
   height = 100;
+  catname = 'Nala';
 
   constructor() {
   }
 
   ngOnInit() {
+    this.startInterval ();
   }
 
   changeName() {
@@ -30,6 +32,17 @@ export class UserComponent implements OnInit {
   getName(): string {
     console.log ( 'getName' );
     return this.name;
+  }
+
+  private startInterval() {
+    let hepStart = 0;
+    let intervalID;
+    intervalID = window.setInterval( () => {
+      console.log ( 'hep' );
+      if ( ++ hepStart  === 10 ) {
+        window.clearInterval( intervalID );
+      }
+    }, 100 );
   }
 }
 

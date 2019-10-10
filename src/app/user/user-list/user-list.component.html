@@ -1,19 +1,24 @@
 
-<span *ngIf="selectedUser; else elseBlock">selected user: {{selectedUser| json}}</span>
-
-<ng-template #elseBlock>
-  <span>select user</span>
-</ng-template>
-<!--
-<ul>
-  <li *ngFor="let user of userList; index as i; first as f; last as l; even as e; odd as o; count as c"
-  [class.even]="e" [class.odd]="o">
-    {{i}} {{f}} {{l}} {{e}} {{o}} {{user.name}} {{userList.length}} {{c}}
-  </li>
-</ul>
-
--->
 <dvz-user-list-item *ngFor="let user of userList"
   [user]="user" [selectedUsr]="selectedUser"
   (selectUsr)="selectUser($event)">
 </dvz-user-list-item>
+
+<button *ngIf="selectedUser" (click)="delSelected()">
+  [-] delete {{selectedUser.name}}?
+</button>
+<button (click)="delInd( 0 )">[-] del First</button>
+<button (click)="delInd( userList.length-1 )">[-] del Last</button>
+
+<ng-container *ngIf="showForm; else showNewBtn">
+  <br>
+  <input type="text" #name placeholder="name"> <br>
+  <input type="number" #age placeholder="age"> <br>
+  <button (click)="addUser (name.value, age.value )">save</button>
+  <button (click)="deactivateForm()">cancel</button>
+</ng-container>
+<ng-template #showNewBtn>
+  <button (click)="activateForm()">create new</button>
+</ng-template>
+
+

@@ -20,7 +20,8 @@ export class UserListComponent implements OnInit {
   ngOnInit() {
   }
 
-  selectUser( user: User ) {
+  selectUser( user: User/*, payload?: any*/ ) {
+    /*console.log ( payload );*/
     if ( this.selectedUser === user ) {
       this.selectedUser = undefined;
     } else {

@@ -1,16 +1,16 @@
 <p>{{selectedUser | json}}</p>
 <dvz-user-list-item
+  [user]="userList[0]"
   [class.selected]="selectedUser===userList[0]"
-  (click)="selectUser(userList[0])">
-  {{userList[0].name}}
+  (selectUsr)="selectUser($event)"> <!-- $event -->
 </dvz-user-list-item>
 <dvz-user-list-item
+  [user]="userList[1]"
   [class.selected]="selectedUser===userList[1]"
-  (click)="selectUser(userList[1])">
-  {{userList[1].name}}
+  (selectUsr)="selectUser($event)">
 </dvz-user-list-item>
 <dvz-user-list-item
+  [user]="userList[2]"
   [class.selected]="selectedUser===userList[2]"
-  (click)="selectUser(userList[2])">
-  {{userList[2].name}}
+  (selectUsr)="selectUser($event)">
 </dvz-user-list-item>

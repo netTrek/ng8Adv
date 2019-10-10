@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { UserService } from './user.service';
 
 @Component ( {
   selector   : 'dvz-user',
@@ -13,7 +14,9 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 export class UserComponent implements OnInit {
   selectedClasses = 'red';
   isSelected = false;
-  constructor() {
+
+  constructor( $user: UserService ) {
+    $user.userList = [ {name: 'frank', age: 1 } ];
   }
 
   ngOnInit() {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
+import { UserService } from '../user.service';
 
 @Component ( {
   selector   : 'dvz-user-list',
@@ -8,15 +9,10 @@ import { User } from '../user';
 } )
 export class UserListComponent implements OnInit {
 
-  userList: User[] = [
-    { name: 'Peter', age: 11 },
-    { name: 'Petra', age: 22 },
-    { name: 'Saban', age: 33 }
-  ];
   selectedUser: User;
   showForm = false;
 
-  constructor() {
+  constructor( public $user: UserService ) {
   }
 
   ngOnInit() {
@@ -33,23 +29,18 @@ export class UserListComponent implements OnInit {
 
   delSelected() {
     if ( !! this.selectedUser ) {
-      this.delInd( this.userList.indexOf( this.selectedUser ));
+      this.delInd( this.$user.userList.indexOf( this.selectedUser ));
     }
   }
+
   delInd( ind: number ) {
-    const toDel: User = this.userList[ ind ];
-    if ( !! toDel ) {
-      if ( toDel === this.selectedUser ) {
+    const deleted = this.$user.delInd( ind );
+    if ( deleted === this.selectedUser ) {
         this.selectedUser = undefined;
-      }
-      this.userList.splice( ind, 1 );
     }
   }
   addUser( name: string, age: number|string ) {
-    age = Number(age);
-    if ( age > 0 && name.trim() !== '' ) {
-      this.userList.push( {name, age} );
-    }
+    this.$user.addUser( name, age );
     this.deactivateForm();
   }
   activateForm() {

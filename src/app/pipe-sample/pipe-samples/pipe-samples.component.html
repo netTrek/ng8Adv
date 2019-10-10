@@ -1,0 +1,33 @@
+<p>pipe-samples works!</p>
+
+<h3>String</h3>
+<ul>
+  <li>{{str}}</li>
+  <li>{{str | uppercase}}</li>
+  <li>{{str | reverse}}</li>
+  <li>{{str | reverse : 'hello' }}</li>
+  <li>{{ [1,2,3, 4] | reverse }}</li>
+  <li>{{ [1,2,3, 4] | reverse : 'hello' }}</li>
+</ul>
+<h3>Number</h3>
+<ul>
+  <li>{{num}}</li>
+  <li>{{num | number }}</li>
+  <li>{{num | number : '3.5-6' }}</li>
+  <li>{{3333.3 | number : '3.5-6' }}</li>
+</ul>
+<h3>Date</h3>
+<ul>
+  <li>{{date}}</li>
+  <li>{{date | date }}</li>
+  <li>{{date | date : 'long' }}</li>
+  <li>{{date | date : 'long' : '+0400'  }}</li>
+  <li>{{date | date : 'long' : '+0400' : 'en' }}</li>
+</ul>
+<h3>Currency</h3>
+<ul>
+  <li>{{price}}</li>
+  <li>{{price | currency }}</li>
+  <li>{{price | currency : 'EUR' }}</li>
+  <li>{{price | currency : 'EUR' : 'code' }}</li>
+</ul>

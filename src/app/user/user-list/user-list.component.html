@@ -1,13 +1,19 @@
-<p>{{selectedUser | json}}</p>
-<dvz-user-list-item
-  [user]="userList[0]" [selectedUsr]="selectedUser"
-  (selectUsr)="selectUser($event)"> <!-- $event -->
-</dvz-user-list-item>
-<dvz-user-list-item
-  [user]="userList[1]" [selectedUsr]="selectedUser"
-  (selectUsr)="selectUser($event)">
-</dvz-user-list-item>
-<dvz-user-list-item
-  [user]="userList[2]" [selectedUsr]="selectedUser"
+
+<span *ngIf="selectedUser; else elseBlock">selected user: {{selectedUser| json}}</span>
+
+<ng-template #elseBlock>
+  <span>select user</span>
+</ng-template>
+<!--
+<ul>
+  <li *ngFor="let user of userList; index as i; first as f; last as l; even as e; odd as o; count as c"
+  [class.even]="e" [class.odd]="o">
+    {{i}} {{f}} {{l}} {{e}} {{o}} {{user.name}} {{userList.length}} {{c}}
+  </li>
+</ul>
+
+-->
+<dvz-user-list-item *ngFor="let user of userList"
+  [user]="user" [selectedUsr]="selectedUser"
   (selectUsr)="selectUser($event)">
 </dvz-user-list-item>

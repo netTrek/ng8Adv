@@ -22,7 +22,10 @@ export class UserService {
   delInd( ind: number ): User {
     const toDel: User = this.userList[ ind ];
     if ( !!toDel ) {
-      this.userList.splice ( ind, 1 );
+      // this.userList.splice ( ind, 1 );
+      this.$http.delete( `${this.endpoint}/${toDel.id}`).subscribe(
+        next => this.updateUserList()
+      );
     }
     return toDel;
   }
@@ -31,8 +34,11 @@ export class UserService {
     age = Number ( age );
     if ( age > 0 && name.trim () !== '' ) {
       const user = { name, age };
-      this.userList.push ( user );
-      this.last$.next ( user );
+      // this.userList.push ( user );
+      this.$http.post( this.endpoint, user ).subscribe(
+        next => this.updateUserList()
+      );
+      // this.last$.next ( user );
     }
   }
 

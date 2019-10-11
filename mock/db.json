@@ -1,12 +1,6 @@
 {
   "users": [
     {
-      "id": 1,
-      "firstname": "Mackenzie",
-      "name": "Hodges",
-      "age": 19
-    },
-    {
       "id": 2,
       "firstname": "Aaliyah",
       "name": "Hailey",
@@ -95,18 +89,6 @@
       "firstname": "Makayla",
       "name": "Ford",
       "age": 2
-    },
-    {
-      "id": 17,
-      "firstname": "Melanie",
-      "name": "Sherlock",
-      "age": 3
-    },
-    {
-      "id": 19,
-      "firstname": "Saban",
-      "name": "Ünlü",
-      "age": 4
     }
   ]
 }

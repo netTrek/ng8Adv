@@ -3,9 +3,22 @@
 <p>{{$dummy.wert1}}</p>
 <dvz-rxjs-sample></dvz-rxjs-sample>
 -->
-<dvz-user dvzDangerBtn color="black"></dvz-user>
 <!--
+<dvz-user dvzDangerBtn color="black"></dvz-user>
 <dvz-countdown></dvz-countdown>
 <dvz-countdown style="width: 300px"></dvz-countdown>
 <dvz-countdown style="width: 100%"></dvz-countdown>
 -->
+
+<nav>
+  <a routerLink="home"
+  routerLinkActive="active">home</a> |
+  <a routerLink="dash"
+  routerLinkActive="active">dash</a> |
+  <a routerLink="user"
+     routerLinkActive="active">user</a>
+</nav>
+
+<router-outlet></router-outlet>
+<br>
+<footer>netTrek</footer>

@@ -73,22 +73,9 @@
       "age": 31
     },
     {
-      "id": 14,
-      "firstname": "Sophie",
-      "name": "Ford",
-      "age": 23
-    },
-    {
-      "id": 15,
-      "firstname": "Serenity",
-      "name": "Molligan",
-      "age": 1
-    },
-    {
-      "id": 16,
-      "firstname": "Makayla",
-      "name": "Ford",
-      "age": 2
+      "name": "jashgd",
+      "age": 23,
+      "id": 14
     }
   ]
 }

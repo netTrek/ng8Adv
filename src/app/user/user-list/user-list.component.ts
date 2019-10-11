@@ -53,7 +53,7 @@ export class UserListComponent implements OnInit, OnDestroy {
 
   delInd( ind: number ) {
     const deleted = this.$user.delInd ( ind );
-    if ( deleted.id === this.selectedUser.id ) {
+    if ( deleted === this.selectedUser ) {
       this.selectedUser = undefined;
     }
   }

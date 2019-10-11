@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
 import { BehaviorSubject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
 @Injectable ( {
@@ -35,7 +35,11 @@ export class UserService {
     if ( age > 0 && name.trim () !== '' ) {
       const user = { name, age };
       // this.userList.push ( user );
-      this.$http.post( this.endpoint, user ).subscribe(
+      // const headers: HttpHeaders = new HttpHeaders().set( 'Authorization', 'Bearer: netTrek');
+      // const options = {
+      //   headers
+      // };
+      this.$http.post( this.endpoint, user/*, options */).subscribe(
         next => this.updateUserList()
       );
       // this.last$.next ( user );

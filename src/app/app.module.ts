@@ -11,7 +11,9 @@ import { registerLocaleData } from '@angular/common';
 import localeDE from '@angular/common/locales/de';
 import { MY_CLASS_SAMPLE, MY_FAC_SAMPLE, MY_NAME, NAMES } from './app.token';
 import { RxjsSampleModule } from './rxjs-sample/rxjs-sample.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthInterceptorService } from './auth-interceptor.service';
+import { HomeModule } from './home/home.module';
 
 registerLocaleData( localeDE ); // registriere neue Sprache
 
@@ -35,10 +37,12 @@ export const fac = () => 12;
     UtilsModule,
     PipeSampleModule,
     RxjsSampleModule,
-    HttpClientModule
+    HttpClientModule,
+    HomeModule
   ],
   providers   : [
     {provide: LOCALE_ID, useValue: 'de' },
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
     { provide: MY_NAME, useValue: 'saban ünlü'},
     { provide: NAMES, useValue: 'saban', multi: true},
     { provide: MY_CLASS_SAMPLE, useClass: TestClassProvider },

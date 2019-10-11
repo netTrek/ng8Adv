@@ -25,7 +25,6 @@ export class UserService {
     }
     return toDel;
   }
-
   addUser( name: string, age: number | string ) {
     age = Number ( age );
     if ( age > 0 && name.trim () !== '' ) {

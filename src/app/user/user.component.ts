@@ -1,6 +1,7 @@
-import { Component, Inject, LOCALE_ID, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, LOCALE_ID, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { UserService } from './user.service';
 import { MY_CLASS_SAMPLE, MY_FAC_SAMPLE, MY_NAME, NAMES } from '../app.token';
+import { Subscription } from 'rxjs';
 
 @Component ( {
   selector   : 'dvz-user',
@@ -12,9 +13,10 @@ import { MY_CLASS_SAMPLE, MY_FAC_SAMPLE, MY_NAME, NAMES } from '../app.token';
   // encapsulation: ViewEncapsulation.ShadowDom
   // encapsulation: ViewEncapsulation.None
 } )
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnDestroy {
   selectedClasses = 'red';
   isSelected      = false;
+  private sub: Subscription;
 
   constructor( public $user: UserService,
                @Inject ( LOCALE_ID ) localeID: string,
@@ -33,7 +35,11 @@ export class UserComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.$user.last$.subscribe( next => console.log (  'last user is', next ) );
+    this.sub = this.$user.last$.subscribe( next => console.log (  'last user is', next ) );
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 
 }

@@ -8,7 +8,7 @@ if (environment.production) {
   enableProdMode();
 }
 
-console.log ( 'endpoint', environment.endpoint, environment.angular );
+// console.log ( 'endpoint', environment.endpoint, environment.angular );
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));

@@ -5,11 +5,11 @@ export class Dummy {
   wert1 = 123;
 
   constructor() {
-    console.log ( 'new dummy born' );
+    // console.log ( 'new dummy born' );
   }
 
   sagHallo() {
-    console.log ( 'hallo' );
+    // console.log ( 'hallo' );
   }
 
   change( newVal: number ) {

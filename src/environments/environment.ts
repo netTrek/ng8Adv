@@ -7,7 +7,7 @@ import { baseEnviroment } from './base-enviroments';
 export const environment = {
   ... baseEnviroment,
   production: false,
-  endpoint: 'http://localhost:3200/user'
+  endpoint: 'http://localhost:3000/users'
 };
 
 /*

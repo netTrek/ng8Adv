@@ -9,8 +9,19 @@ import { PipeSampleModule } from './pipe-sample/pipe-sample.module';
 
 import { registerLocaleData } from '@angular/common';
 import localeDE from '@angular/common/locales/de';
+import { MY_CLASS_SAMPLE, MY_FAC_SAMPLE, MY_NAME, NAMES } from './app.token';
+import { RxjsSampleModule } from './rxjs-sample/rxjs-sample.module';
 
 registerLocaleData( localeDE ); // registriere neue Sprache
+
+export interface TestInt {
+  wert: number;
+}
+export class TestClassProvider implements TestInt {
+  wert = 123;
+}
+
+export const fac = () => 12;
 
 @NgModule ( {
   declarations: [
@@ -21,10 +32,15 @@ registerLocaleData( localeDE ); // registriere neue Sprache
     AppRoutingModule,
     UserModule,
     UtilsModule,
-    PipeSampleModule
+    PipeSampleModule,
+    RxjsSampleModule
   ],
   providers   : [
-    {provide: LOCALE_ID, useValue: 'de' }
+    {provide: LOCALE_ID, useValue: 'de' },
+    { provide: MY_NAME, useValue: 'saban ünlü'},
+    { provide: NAMES, useValue: 'saban', multi: true},
+    { provide: MY_CLASS_SAMPLE, useClass: TestClassProvider },
+    { provide: MY_FAC_SAMPLE, useFactory: fac },
     /*Dummy*/
   ],
   bootstrap   : [ AppComponent ]

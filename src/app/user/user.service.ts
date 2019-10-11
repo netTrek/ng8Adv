@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable ( {
   providedIn: 'root'
@@ -11,6 +12,8 @@ export class UserService {
     { name: 'Petra', age: 22 },
     { name: 'Saban', age: 33 }
   ];
+
+  last$ = new BehaviorSubject<User>( this.userList [ this.userList.length - 1 ] );
 
   constructor() {
   }
@@ -26,7 +29,9 @@ export class UserService {
   addUser( name: string, age: number | string ) {
     age = Number ( age );
     if ( age > 0 && name.trim () !== '' ) {
-      this.userList.push ( { name, age } );
+      const user = { name, age };
+      this.userList.push ( user );
+      this.last$.next( user );
     }
   }
 }

@@ -11,6 +11,7 @@ import { registerLocaleData } from '@angular/common';
 import localeDE from '@angular/common/locales/de';
 import { MY_CLASS_SAMPLE, MY_FAC_SAMPLE, MY_NAME, NAMES } from './app.token';
 import { RxjsSampleModule } from './rxjs-sample/rxjs-sample.module';
+import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData( localeDE ); // registriere neue Sprache
 
@@ -33,7 +34,8 @@ export const fac = () => 12;
     UserModule,
     UtilsModule,
     PipeSampleModule,
-    RxjsSampleModule
+    RxjsSampleModule,
+    HttpClientModule
   ],
   providers   : [
     {provide: LOCALE_ID, useValue: 'de' },

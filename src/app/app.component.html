@@ -10,11 +10,15 @@
 <dvz-countdown style="width: 100%"></dvz-countdown>
 -->
 
+<h1 *ngIf="$loading.counter>0">loading</h1>
+
 <nav>
   <a routerLink="home"
   routerLinkActive="active">home</a> |
   <a routerLink="dash"
   routerLinkActive="active">dash</a> |
+  <a routerLink="contact"
+  routerLinkActive="active">contact</a> |
   <a routerLink="user"
      routerLinkActive="active">user</a>
 </nav>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Dummy } from './user/dummy';
+import { LoadingService } from './loading.service';
 
 @Component ( {
   selector   : 'dvz-root',
@@ -9,7 +10,7 @@ import { Dummy } from './user/dummy';
 export class AppComponent {
   title = 'dvz';
 
-  constructor( public $dummy: Dummy ) {
+  constructor( public $dummy: Dummy, public $loading: LoadingService) {
     // console.log ( $dummy );
     $dummy.sagHallo ();
   }

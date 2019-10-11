@@ -1,0 +1,4 @@
+<p>{{user | json}}</p>
+
+
+<a *ngIf="user" [routerLink]="['/user', user.id + 1]">next</a>

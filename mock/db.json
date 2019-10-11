@@ -1,10 +1,16 @@
 {
   "users": [
     {
+      "id": 1,
+      "firstname": "Lillian",
+      "name": "Goodman",
+      "age": 21
+    },
+    {
       "id": 2,
-      "firstname": "Aaliyah",
-      "name": "Hailey",
-      "age": 20
+      "firstname": "Lillian",
+      "name": "Goodman",
+      "age": 21
     },
     {
       "id": 3,
@@ -29,12 +35,6 @@
       "firstname": "Maya",
       "name": "Turner",
       "age": 44
-    },
-    {
-      "id": 7,
-      "firstname": "Brooklyn",
-      "name": "Oldridge",
-      "age": 33
     },
     {
       "id": 8,

@@ -8,7 +8,7 @@ import { FormComponent } from './contact/form/form.component';
 const routes: Routes = [
   {path: '', component: ContactComponent,
     children: [
-      { path: '', redirectTo: 'map', pathMatch: 'full'},
+      { path: '', redirectTo: 'form', pathMatch: 'full'},
       {path: 'map', component: MapComponent},
       {path: 'form', component: FormComponent}
     ]

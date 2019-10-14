@@ -1,1 +1,47 @@
-<p>form works!</p>
+<h3>
+  form
+</h3>
+
+<form #myForm="ngForm" (ngSubmit)="submit ( myForm.value )">
+
+  <input type="text"
+         placeholder="name"
+         name="name"
+         ngModel
+         #name="ngModel"
+         required
+  >
+
+  <span ngModelGroup="credentials">
+    <input type="email"
+           placeholder="email"
+           name="email"
+           ngModel
+           required
+           email
+           #email="ngModel"
+    >
+    <div *ngIf="email.dirty && email.touched ">
+      <span *ngIf="email.errors?.required; else invalidMail">Bitte trage eine email Adrees ein</span>
+      <ng-template #invalidMail>
+        <span>Die von Ihnen eingeegebe......nihc gültig</span>
+      </ng-template>
+    </div>
+    <input type="password"
+           placeholder="password"
+           name="password"
+           ngModel
+           #password="ngModel"
+    >
+  </span>
+  <button type="submit" [disabled]="myForm.invalid">submit</button>
+  <button type="reset" [disabled]="myForm.pristine">reset</button>
+</form>
+<!--
+<p>wurde in dem Formular schon gearbeitet {{myForm.dirty }}</p>
+<p>wurde noch nicht beabeitet {{myForm.pristine }}</p>
+<p>wurde berührt{{myForm.touched }}</p>
+<p>wurde noch nicht berührt {{myForm.untouched }}</p>
+-->
+
+<p>{{myForm.value | json }}</p>

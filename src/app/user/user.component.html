@@ -1,0 +1,13 @@
+<h1>Herr/Frau {{name}}</h1>
+
+<button (click)="changeName()">klick mich</button>
+<rp-user-list></rp-user-list>
+
+<ul>
+  <li>bitte nie statisch werte binden {{1+2}}</li>
+  <li>methoden rückgabe {{getCounter()}} --- nur wenn wirklich notwendig</li>
+</ul>
+
+<img src="./assets/images/cat{{ind}}.jpeg" alt="cat"
+     (click)="toggleCat()">
+<img src="./assets/images/{{catfile}}" alt="cat">

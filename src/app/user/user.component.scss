@@ -1,0 +1,17 @@
+:host {
+  background-color: green;
+  display: block;
+}
+
+//::ng-deep h1 {    // aushebeln des Attr. Workarounds
+h1 {
+  color: darkgray;
+}
+
+ul ::ng-deep li {
+  color: red;
+}
+
+button {
+  background-color: yellowgreen;
+}

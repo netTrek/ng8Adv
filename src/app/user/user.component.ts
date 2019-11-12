@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component ( {
   selector   : 'rp-user',
@@ -11,7 +11,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   // encapsulation: ViewEncapsulation.ShadowDomNone
   // encapsulation: ViewEncapsulation.None
 } )
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnDestroy {
   name          = 'saban ünlü';
   private count = 0;
   catfile       = 'cat1.jpeg';
@@ -54,10 +54,17 @@ export class UserComponent implements OnInit {
   }
 
   private stopInterval() {
-    window.clearInterval( this.intervalID );
+    if ( !! this.intervalID ) {
+      window.clearInterval( this.intervalID );
+      this.intervalID = undefined;
+    }
   }
 
   over( $event: MouseEvent ) {
     console.log ( 'over', $event );
+  }
+
+  ngOnDestroy(): void {
+    this.stopInterval ();
   }
 }

@@ -2,13 +2,15 @@
 
 <!--
 <rp-user-list-item [class]="selectedClassName">User 1</rp-user-list-item>
--->
 <p>{{selectedUser | json }}</p>
+-->
 <rp-user-list-item  [isSelected]="selectedUser===userList[0]"
                     (selectUsr)="selectUser( $event )"
                     [user]="userList[0]">
 </rp-user-list-item>
+
 <rp-user-list-item  [isSelected]="selectedUser===userList[1]"
                     (selectUsr)="selectUser( $event )"
                     [user]="userList[1]">
 </rp-user-list-item>
+

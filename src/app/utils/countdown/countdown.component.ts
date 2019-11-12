@@ -1,19 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component, OnDestroy, OnInit } from '@angular/core';
 
-@Component({
-  selector: 'rp-countdown',
+@Component ( {
+  selector   : 'rp-countdown',
   templateUrl: './countdown.component.html',
-  styleUrls: ['./countdown.component.scss']
-})
-export class CountdownComponent implements OnInit {
+  styleUrls  : [ './countdown.component.scss' ]
+} )
+export class CountdownComponent implements
+  OnInit, OnDestroy {
 
   width = 100;
   private intervalID: number;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
-    this.startInterval();
+    this.startInterval ();
   }
 
   private startInterval() {
@@ -27,8 +29,16 @@ export class CountdownComponent implements OnInit {
     );
   }
 
-  private stopInterval() {
-    window.clearInterval( this.intervalID );
+  stopInterval() {
+    if ( !!this.intervalID ) {
+      window.clearInterval ( this.intervalID );
+      this.intervalID = undefined;
+    }
   }
+
+  ngOnDestroy(): void {
+    this.stopInterval ();
+  }
+
 
 }

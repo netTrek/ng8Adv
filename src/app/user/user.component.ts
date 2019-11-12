@@ -5,7 +5,8 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
   // template: '<strong>hello</strong>',
   // template: `<h1>user</h1>
   // <h2>{{name}}</h2>`,
-  templateUrl: './user.component.html',
+  templateUrl: './user.co' +
+    'mponent.html',
   // styles: [ `/*h1 { background: red}*/`]
   styleUrls  : [ './user.component.scss' ]
   // encapsulation: ViewEncapsulation.ShadowDomNone

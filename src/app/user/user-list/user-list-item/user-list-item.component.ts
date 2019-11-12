@@ -43,7 +43,7 @@ export class UserListItemComponent
     // if ( changes.hasOwnProperty('isSelected') ) { // gibt es die Eigenschaft
     if ( !! changes.isSelected ) { // gibt es die Eigenschaft
       const selectonState: SimpleChange = changes.isSelected;
-      console.log ( selectonState.currentValue );
+      // console.log ( selectonState.currentValue );
     }
   }
 }

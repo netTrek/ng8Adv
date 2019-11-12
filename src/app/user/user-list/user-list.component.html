@@ -1,16 +1,22 @@
-<span>list</span>
+<h2>list</h2>
 
 <!--
 <rp-user-list-item [class]="selectedClassName">User 1</rp-user-list-item>
 <p>{{selectedUser | json }}</p>
 -->
-<rp-user-list-item  [isSelected]="selectedUser===userList[0]"
-                    (selectUsr)="selectUser( $event )"
-                    [user]="userList[0]">
+<hr #rule>
+<rp-user-list-item (selectUsr)="selectUser( $event )"
+                   [user]="userList[0]">
 </rp-user-list-item>
 
-<rp-user-list-item  [isSelected]="selectedUser===userList[1]"
-                    (selectUsr)="selectUser( $event )"
-                    [user]="userList[1]">
+<rp-user-list-item (selectUsr)="selectUser( $event )"
+                   [user]="userList[1]">
 </rp-user-list-item>
 
+<!--
+
+<input type="text"
+       #firstname
+       placeholder="firstname">
+<p>{{firstname.value | json}}</p>
+-->

@@ -7,16 +7,9 @@ import { UserListItemComponent } from './user-list-item/user-list-item.component
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })
-export class UserListComponent implements OnInit, AfterViewInit {
+export class UserListComponent implements OnInit {
 
   selectedClassName = 'selected underlined';
-
-
-  @ViewChild ( 'rule', { static: true } )
-  rule: ElementRef<HTMLHRElement>;
-
-  @ViewChild ( UserListItemComponent, { static: false } )
-  firstItem: UserListItemComponent;
 
   @ViewChildren ( UserListItemComponent )
   userItems: QueryList<UserListItemComponent>;
@@ -28,17 +21,10 @@ export class UserListComponent implements OnInit, AfterViewInit {
     ];
   selectedUser: User;
 
-  constructor( private elemRef: ElementRef, private renderer: Renderer2 ) {
-    // console.log ( this.elemRef );
-    // this.elemRef.nativeElement.style.borderColor = 'red';
-    // this.elemRef.nativeElement.style.borderStyle = 'solid';
-    // benutzt den Rednerer für SSR!
-    // this.renderer.setStyle( this.elemRef.nativeElement, 'backgroundColor', 'red');
+  constructor( ) {
   }
 
   ngOnInit() {
-    console.log ( '-...' , this.rule );
-    this.renderer.setStyle( this.rule.nativeElement, 'borderColor', 'red');
   }
 
   selectUser( userToSelect: User ) {
@@ -59,10 +45,4 @@ export class UserListComponent implements OnInit, AfterViewInit {
     // );
   }
 
-  ngAfterViewInit(): void {
-    console.log ( this.firstItem, this.userItems.toArray() );
-    // setTimeout ( () => {
-    //   this.firstItem.isSelected = true;
-    // }, 1 );
-  }
 }

@@ -3,8 +3,45 @@
 <!--
 <rp-user-list-item [class]="selectedClassName">User 1</rp-user-list-item>
 <p>{{selectedUser | json }}</p>
--->
 <hr #rule>
+-->
+<!--
+
+<span *ngIf="selectedUser">
+  Selktiert wurd:
+  {{selectedUser.firstname}}
+  {{selectedUser.lastname}}
+</span>
+<span *ngIf="!selectedUser">
+  bitte wähle einen User
+</span>
+-->
+
+
+<!--
+<ng-template [ngIf]="true">
+  <br>
+  <span>hello world</span>
+  <hr>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+</ng-template>
+-->
+
+
+
+<span *ngIf="selectedUser; else noUsrSelected">
+  Selktiert wurd:
+  {{selectedUser.firstname}}
+  {{selectedUser.lastname}}
+</span>
+<ng-template #noUsrSelected>
+    bitte wähle einen User
+</ng-template>
+
 <rp-user-list-item (selectUsr)="selectUser( $event )"
                    [user]="userList[0]">
 </rp-user-list-item>

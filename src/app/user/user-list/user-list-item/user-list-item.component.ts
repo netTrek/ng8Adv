@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostBinding, HostListener, Input, OnInit, Output } from '@angular/core';
+import { User } from '../../user';
 
 @Component({
   selector: 'rp-user-list-item',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserListItemComponent implements OnInit {
 
+  @Input() user: User;
+
+  @Input()
+  @HostBinding ('class.selected')
+  isSelected = false;
+
+
+  @Output() selectUsr: EventEmitter<User> =
+                                new EventEmitter();
   constructor() { }
 
   ngOnInit() {
   }
 
+  @HostListener ('click')
+  selectUser() {
+    this.selectUsr.emit( this.user );
+  }
 }

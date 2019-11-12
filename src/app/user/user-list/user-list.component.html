@@ -1,26 +1,14 @@
-<h2>list</h2>
+<span>list</span>
 
 <!--
 <rp-user-list-item [class]="selectedClassName">User 1</rp-user-list-item>
 -->
-{{selectedInd}}
-<rp-user-list-item [class.selected]="selectedInd===0"
-                   (click)="selectInd(0)">
-  User 1
+<p>{{selectedUser | json }}</p>
+<rp-user-list-item  [isSelected]="selectedUser===userList[0]"
+                    (selectUsr)="selectUser( $event )"
+                    [user]="userList[0]">
 </rp-user-list-item>
-<rp-user-list-item [class.selected]="selectedInd===1"
-                   (click)="selectInd(1)">
-  User 2
-</rp-user-list-item>
-<rp-user-list-item [class.selected]="selectedInd===2"
-                   (click)="selectInd(2)">
-  User 3
-</rp-user-list-item>
-<rp-user-list-item [class.selected]="selectedInd===3"
-                   (click)="selectInd(3)">
-  User 4
-</rp-user-list-item>
-<rp-user-list-item [class.selected]="selectedInd===4"
-                   (click)="selectInd(4)">
-  User 5
+<rp-user-list-item  [isSelected]="selectedUser===userList[1]"
+                    (selectUsr)="selectUser( $event )"
+                    [user]="userList[1]">
 </rp-user-list-item>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../user';
 
 @Component({
   selector: 'rp-user-list',
@@ -7,19 +8,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserListComponent implements OnInit {
   selectedClassName = 'selected underlined';
-  selectedInd = -1;
+
+  userList: User[] =
+    [
+      {firstname: 'saban', lastname: 'uenlue'},
+      {firstname: 'peter', lastname: 'mueller'}
+    ];
+  selectedUser: User;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  selectInd( ind: number ) {
-    // if ( ind === this.selectedInd ) {
-    //   this.selectedInd = -1;
-    // } else {
-    //   this.selectedInd = ind;
-    // }
-    this.selectedInd = ind === this.selectedInd ? -1 : ind;
+
+  selectUser( userToSelect: User ) {
+    // this.selectedUser = userToSelect;
+    this.selectedUser =
+      this.selectedUser === userToSelect ?
+      undefined :
+      userToSelect;
   }
 }

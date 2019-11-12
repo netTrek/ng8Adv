@@ -1,7 +1,12 @@
 :host {
   display: block;
   background-color: yellowgreen;
+  cursor: pointer;
   &::before {
     content: '- ';
+  }
+  &.selected {
+    background-color: red;
+    cursor: not-allowed;
   }
 }

@@ -56,4 +56,8 @@ export class UserComponent implements OnInit {
   private stopInterval() {
     window.clearInterval( this.intervalID );
   }
+
+  over( $event: MouseEvent ) {
+    console.log ( 'over', $event );
+  }
 }

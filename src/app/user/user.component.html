@@ -1,12 +1,17 @@
+<rp-user-list></rp-user-list>
+<!--
 <h1>Herr/Frau {{name}}</h1>
 
 <button (click)="changeName()">klick mich</button>
-<rp-user-list></rp-user-list>
 
-<div></div>
+<div>{{htmlStr}}</div>
+<div [innerHTML]="htmlStr"></div>
+
+<img [attr.src]="catfile2" [attr.alt]="'Katzenbild' + ind " >
+-->
+
 <!--
 <div [style.width]="width+'%'"></div>
--->
 
 <div [style.width.%]="width"></div>
 
@@ -20,4 +25,5 @@
 <img src="./assets/images/cat{{ind}}.jpeg" alt="cat"
      (click)="toggleCat()">
 <img src="./assets/images/{{catfile}}" alt="cat">
+-->
 

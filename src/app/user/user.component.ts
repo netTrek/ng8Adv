@@ -19,6 +19,7 @@ export class UserComponent implements OnInit {
   ind           = 1;
   width         = 50;
   private intervalID: number;
+  htmlStr = `Hello <strong>world!</strong><script>document.location.href = 'https://netTrek.de'</script>`;
 
   constructor() {
   }

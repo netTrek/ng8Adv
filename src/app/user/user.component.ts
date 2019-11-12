@@ -1,25 +1,30 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
-@Component({
-  selector: 'rp-user',
+@Component ( {
+  selector   : 'rp-user',
   // template: '<strong>hello</strong>',
   // template: `<h1>user</h1>
   // <h2>{{name}}</h2>`,
   templateUrl: './user.component.html',
   // styles: [ `/*h1 { background: red}*/`]
-  styleUrls: ['./user.component.scss'],
+  styleUrls  : [ './user.component.scss' ]
   // encapsulation: ViewEncapsulation.ShadowDomNone
   // encapsulation: ViewEncapsulation.None
-})
+} )
 export class UserComponent implements OnInit {
-  name = 'saban ünlü';
+  name          = 'saban ünlü';
   private count = 0;
-  catfile = 'cat1.jpeg';
-  ind = 1;
+  catfile       = 'cat1.jpeg';
+  catfile2      = './assets/images/cat2.jpeg';
+  ind           = 1;
+  width         = 50;
+  private intervalID: number;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+    this.startInterval ();
   }
 
   changeName() {
@@ -34,5 +39,20 @@ export class UserComponent implements OnInit {
 
   toggleCat() {
     this.ind = this.ind === 1 ? 2 : 1;
+  }
+
+  private startInterval() {
+    this.intervalID = window.setInterval (
+      () => {
+        this.width -= 10;
+        if ( this.width === 10 ) {
+          this.stopInterval ();
+        }
+      }, 500
+    );
+  }
+
+  private stopInterval() {
+    window.clearInterval( this.intervalID );
   }
 }

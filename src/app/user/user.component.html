@@ -3,6 +3,15 @@
 <button (click)="changeName()">klick mich</button>
 <rp-user-list></rp-user-list>
 
+<div></div>
+<!--
+<div [style.width]="width+'%'"></div>
+-->
+
+<div [style.width.%]="width"></div>
+
+<img [src]="catfile2" alt="cat">
+
 <ul>
   <li>bitte nie statisch werte binden {{1+2}}</li>
   <li>methoden rückgabe {{getCounter()}} --- nur wenn wirklich notwendig</li>
@@ -11,3 +20,4 @@
 <img src="./assets/images/cat{{ind}}.jpeg" alt="cat"
      (click)="toggleCat()">
 <img src="./assets/images/{{catfile}}" alt="cat">
+

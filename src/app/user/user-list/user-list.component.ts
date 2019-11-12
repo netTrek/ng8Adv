@@ -45,4 +45,26 @@ export class UserListComponent implements OnInit {
     // );
   }
 
+  addUser( firstname: string, lastname: string ) {
+    if ( firstname.trim() !== ''
+          &&
+         lastname.trim() !== ''
+    ) {
+      this.userList.push(
+        {
+          firstname: firstname,
+          lastname: lastname,
+        }
+      );
+    }
+  }
+
+  delSelected() {
+    if ( !!this.selectedUser ) {
+      this.userList.splice(
+        this.userList.indexOf( this.selectedUser ),
+        1
+      );
+    }
+  }
 }

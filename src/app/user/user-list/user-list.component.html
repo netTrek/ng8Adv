@@ -42,18 +42,36 @@
     bitte wähle einen User
 </ng-template>
 
-<rp-user-list-item (selectUsr)="selectUser( $event )"
-                   [user]="userList[0]">
+<!--
+<ul>
+  <li
+    *ngFor="let item of [1,2,3,4,5]; index as i; first as f; even as e"
+    [class.even]="e"
+  >
+    #{{i}} - {{item}} {{f}} {{e}}
+  </li>
+</ul>
+-->
+
+
+<rp-user-list-item  *ngFor="let user of userList"
+                    (selectUsr)="selectUser( $event )"
+                    [user]="user">
 </rp-user-list-item>
+<!--
 
 <rp-user-list-item (selectUsr)="selectUser( $event )"
                    [user]="userList[1]">
 </rp-user-list-item>
+-->
 
-<!--
+
  <input type="text"
        #firstname
-       (keyup)="selectedUser"
        placeholder="firstname">
-<p>{{firstname.value | json}}</p>
--->
+ <input type="text"
+       #lastname
+       placeholder="lastname">
+<button (click)="addUser( firstname.value, lastname.value)">add</button>
+<button *ngIf="selectedUser" (click)="delSelected()">del selected</button>
+

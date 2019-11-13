@@ -14,6 +14,7 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 } )
 export class UserComponent implements OnInit, OnDestroy {
   name          = 'saban ünlü';
+  classList = 'klaus';
   private count = 0;
   catfile       = 'cat1.jpeg';
   catfile2      = './assets/images/cat2.jpeg';

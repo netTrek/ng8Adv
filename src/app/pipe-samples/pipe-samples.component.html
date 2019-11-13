@@ -1,1 +1,54 @@
 <p>pipe-samples works!</p>
+
+<!--
+(h1+ul>li{{test}})*4
+-->
+
+<h1>reverse</h1>
+<ul>
+  <li>{{testStr | reverse }}</li>
+  <li>{{testNum | reverse }}</li>
+  <li>{{[1,2,3] | reverse }}</li>
+  <!--
+  -->
+</ul>
+
+<h1>date</h1>
+<ul>
+  <li>{{testDate}}</li>
+  <li>{{testDate | date }}</li>
+  <li>{{testDate | date : 'long' }}</li>
+  <li>{{testDate | date : 'short' }}</li>
+  <li>{{testDate | date : 'full' }}</li>
+  <li>{{testDate | date : 'yy/MM' }}</li>
+  <li>{{testDate | date : 'long' : '+0900' }}</li>
+  <li>{{testDate | date : 'long' : '+0900' : 'de' }}</li>
+  <li>{{testDate | date : 'long' : '+0900' : 'en' }}</li>
+</ul>
+<h1>string</h1>
+<ul>
+  <li>{{testStr}}</li>
+  <li>{{testStr | uppercase}}</li>
+  <li>{{testStr | lowercase}}</li>
+  <li>{{testStr | lowercase | slice : 3}}</li>
+  <li>{{testStr | lowercase | slice : 0 : 4 }}</li>
+</ul>
+<h1>number</h1>
+<ul>
+  <li>{{testNum}}</li>
+  <li>{{testNum | number }}</li>
+  <li>{{testNum | number : '2.4' }}</li>
+  <li>{{testNum | number : '.4' }}</li>
+  <li>{{testNum | number : '.4-5' }}</li>
+</ul>
+<h1>currency</h1>
+<ul>
+  <li>{{testNum}}</li>
+  <li>{{testNum | currency }}</li>
+  <li>{{testNum | currency : 'EUR' }}</li>
+  <li>{{testNum | currency : 'EUR' : 'symbol' }}</li>
+  <li>{{testNum | currency : 'EUR' : 'code' }}</li>
+  <li>{{testNum | currency : 'EUR' : 'symbol' : '.3' }}</li>
+</ul>
+
+

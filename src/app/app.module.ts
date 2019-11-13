@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { UserModule } from './user/user.module';
 import { UtilsModule } from './utils/utils.module';
 import { ContentSampleModule } from './content-sample/content-sample.module';
+import { PipeSamplesModule } from './pipe-samples/pipe-samples.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,7 @@ import { ContentSampleModule } from './content-sample/content-sample.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    UserModule, UtilsModule, ContentSampleModule
+    UserModule, UtilsModule, ContentSampleModule, PipeSamplesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

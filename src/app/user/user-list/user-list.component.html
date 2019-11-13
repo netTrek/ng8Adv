@@ -72,6 +72,7 @@
 </rp-user-list-item>
 -->
 
+<div rpDangerBtn>dasdas</div>
 
 <input type="text"
        #firstname
@@ -79,6 +80,6 @@
 <input type="text"
        #lastname
        placeholder="lastname">
-<button (click)="addUser( firstname.value, lastname.value)">add</button>
+<button rpDangerBtn (click)="addUser( firstname.value, lastname.value)">add</button>
 <button *ngIf="selectedUser" (click)="delSelected()">del selected</button>
 

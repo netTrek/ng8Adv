@@ -51,10 +51,7 @@ export class UserListComponent implements OnInit {
          lastname.trim() !== ''
     ) {
       this.userList.push(
-        {
-          firstname: firstname,
-          lastname: lastname
-        }
+        { firstname, lastname }
       );
     }
   }

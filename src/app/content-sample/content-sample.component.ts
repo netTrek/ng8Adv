@@ -24,7 +24,7 @@ export class ContentSampleComponent implements OnInit, AfterContentInit {
 
   ngAfterContentInit(): void {
     console.log ( this.firstCountDown, this.firstCountDownElem );
-    this.firstCountDown.stopInterval();
+    // this.firstCountDown.stopInterval();
     console.log ( this.countDowns, this.countDowns.toArray() );
     // TODO Subscribe to changes
   }

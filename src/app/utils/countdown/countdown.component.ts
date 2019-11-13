@@ -1,4 +1,6 @@
-import { AfterContentInit, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { interval, Subscription } from 'rxjs';
+import { take } from 'rxjs/operators';
 
 @Component ( {
   selector   : 'rp-countdown',
@@ -9,35 +11,42 @@ export class CountdownComponent implements
   OnInit, OnDestroy {
 
   width = 100;
-  private intervalID: number;
+  private sub: Subscription;
+  // private intervalID: number;
 
   constructor() {
   }
 
   ngOnInit() {
-    this.startInterval ();
-  }
-
-  private startInterval() {
-    this.intervalID = window.setInterval (
-      () => {
-        this.width -= 10;
-        if ( this.width === 0 ) {
-          this.stopInterval ();
-        }
-      }, 200
+    // this.startInterval ();
+    this.sub = interval( 200 ).pipe(
+      take ( 10 )
+    ).subscribe(
+      () => this.width -= 10
     );
   }
 
-  stopInterval() {
-    if ( !!this.intervalID ) {
-      window.clearInterval ( this.intervalID );
-      this.intervalID = undefined;
-    }
-  }
+  // private startInterval() {
+  //   this.intervalID = window.setInterval (
+  //     () => {
+  //       this.width -= 10;
+  //       if ( this.width === 0 ) {
+  //         this.stopInterval ();
+  //       }
+  //     }, 200
+  //   );
+  // }
+  //
+  // stopInterval() {
+  //   if ( !!this.intervalID ) {
+  //     window.clearInterval ( this.intervalID );
+  //     this.intervalID = undefined;
+  //   }
+  // }
 
   ngOnDestroy(): void {
-    this.stopInterval ();
+    // this.stopInterval ();
+    this.sub.unsubscribe();
   }
 
 

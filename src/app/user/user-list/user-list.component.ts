@@ -1,13 +1,14 @@
-import { AfterViewInit, Component, ElementRef, OnInit, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
 import { User } from '../user';
 import { UserListItemComponent } from './user-list-item/user-list-item.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'rp-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   selectedClassName = 'selected underlined';
 
@@ -20,6 +21,7 @@ export class UserListComponent implements OnInit {
       {firstname: 'peter', lastname: 'mueller'}
     ];
   selectedUser: User;
+  private sub: Subscription = new Subscription();
 
   constructor( ) {
   }
@@ -63,5 +65,17 @@ export class UserListComponent implements OnInit {
         1
       );
     }
+  }
+
+  ngAfterViewInit(): void {
+    this.sub.add (
+      this.userItems.changes.subscribe(
+        next => console.log( next )
+      )
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }

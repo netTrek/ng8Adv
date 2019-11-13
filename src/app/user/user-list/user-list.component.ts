@@ -53,7 +53,7 @@ export class UserListComponent implements OnInit {
       this.userList.push(
         {
           firstname: firstname,
-          lastname: lastname,
+          lastname: lastname
         }
       );
     }

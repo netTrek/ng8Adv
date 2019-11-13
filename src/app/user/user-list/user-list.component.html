@@ -32,14 +32,13 @@
 -->
 
 
-
 <span *ngIf="selectedUser; else noUsrSelected">
   Selktiert wurd:
   {{selectedUser.firstname}}
   {{selectedUser.lastname}}
 </span>
 <ng-template #noUsrSelected>
-    bitte wähle einen User
+  bitte wähle einen User
 </ng-template>
 
 <!--
@@ -53,11 +52,19 @@
 </ul>
 -->
 
+<!--
+<ng-container *ngFor="let user of userList">
+  <rp-user-list-item  (selectUsr)="selectUser( $event )"
+                      [user]="user">
+  </rp-user-list-item>
+</ng-container>
+-->
 
 <rp-user-list-item  *ngFor="let user of userList"
                     (selectUsr)="selectUser( $event )"
                     [user]="user">
 </rp-user-list-item>
+
 <!--
 
 <rp-user-list-item (selectUsr)="selectUser( $event )"
@@ -66,10 +73,10 @@
 -->
 
 
- <input type="text"
+<input type="text"
        #firstname
        placeholder="firstname">
- <input type="text"
+<input type="text"
        #lastname
        placeholder="lastname">
 <button (click)="addUser( firstname.value, lastname.value)">add</button>

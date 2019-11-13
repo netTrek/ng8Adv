@@ -1,8 +1,10 @@
 :host {
   display: block;
+
   background-color: yellowgreen;
   cursor: pointer;
   user-select: none;
+
   &::before {
     content: '- ';
   }

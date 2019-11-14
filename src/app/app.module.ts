@@ -13,6 +13,9 @@ import localeDE from '@angular/common/locales/de';
 import { registerLocaleData } from '@angular/common';
 import { RxjsSamplesModule } from './rxjs-samples/rxjs-samples.module';
 import { COMPANIES, FAC_TEST, RUNDP } from './app.incection-tokens';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AppErrorInterceptorService } from './app-error-interceptor.service';
+import { AuthInterceptorService } from './auth-interceptor.service';
 registerLocaleData( localeDE );
 
 export const myFac = locale => locale === 'de' ? 'deutsch' : 'englisch';
@@ -32,6 +35,12 @@ export const myFac = locale => locale === 'de' ? 'deutsch' : 'englisch';
     {provide: RUNDP, useValue: 'rundp' },
     {provide: COMPANIES, useValue: 'rundp', multi: true  },
     {provide: FAC_TEST, useFactory: myFac, deps: [ LOCALE_ID] },
+    {provide: HTTP_INTERCEPTORS,
+      useClass: AppErrorInterceptorService,
+      multi: true },
+    {provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true }
   ],
   bootstrap: [AppComponent]
 })

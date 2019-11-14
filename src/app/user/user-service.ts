@@ -73,8 +73,8 @@ export class UserService {
 
       this.$http.delete( environment.endpoint + selectedUser.id + '000000000' )
         .subscribe(
-          next => this.updateUserList (),
-          error => alert ( 'Datensatz konnte nicht gelöscht werden' )
+          next => this.updateUserList ()/*,
+          error => alert ( 'Datensatz konnte nicht gelöscht werden' )*/
         );
 
       // const userList = this.userStore$.value.userList;

@@ -2,6 +2,7 @@ import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, QueryList, Ren
 import { User } from '../user';
 import { UserListItemComponent } from './user-list-item/user-list-item.component';
 import { Subscription } from 'rxjs';
+import { UserService } from '../user-service';
 
 @Component({
   selector: 'rp-user-list',
@@ -14,16 +15,10 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChildren ( UserListItemComponent )
   userItems: QueryList<UserListItemComponent>;
-
-  userList: User[] =
-    [
-      {firstname: 'saban', lastname: 'uenlue'},
-      {firstname: 'peter', lastname: 'mueller'}
-    ];
   selectedUser: User;
   private sub: Subscription = new Subscription();
 
-  constructor( ) {
+  constructor( public $user: UserService ) {
   }
 
   ngOnInit() {
@@ -39,32 +34,6 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
     this.userItems.forEach(
       item => item.isSelected = item.user === this.selectedUser
     );
-    // lange Fassung für bessere Lesbarkeit
-    // this.userItems.forEach(
-    //   ( item ) => {
-    //     item.isSelected = item.user === this.selectedUser;
-    //   }
-    // );
-  }
-
-  addUser( firstname: string, lastname: string ) {
-    if ( firstname.trim() !== ''
-          &&
-         lastname.trim() !== ''
-    ) {
-      this.userList.push(
-        { firstname, lastname }
-      );
-    }
-  }
-
-  delSelected() {
-    if ( !!this.selectedUser ) {
-      this.userList.splice(
-        this.userList.indexOf( this.selectedUser ),
-        1
-      );
-    }
   }
 
   ngAfterViewInit(): void {

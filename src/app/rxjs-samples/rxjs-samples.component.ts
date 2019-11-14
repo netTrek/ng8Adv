@@ -29,8 +29,8 @@ export class RxjsSamplesComponent implements OnInit {
   }
 
   private initHotBehaviorSubjectSample() {
-    const observable: BehaviorSubject<number|undefined> =
-            new BehaviorSubject<number|undefined>( undefined )
+    const behavior = new BehaviorSubject<number>( undefined );
+    const observable: Observable<number> = behavior
       .pipe(
         skipWhile ( value => !value ),
         distinctUntilChanged()
@@ -38,13 +38,13 @@ export class RxjsSamplesComponent implements OnInit {
     ;
     // observable.next( 0 );
     this.subscribe( observable, '#1 ' );
-    observable.next( 1 );
-    observable.next( 1 );
-    observable.next( 1 );
-    observable.next( 2 );
+    behavior.next( 1 );
+    behavior.next( 1 );
+    behavior.next( 1 );
+    behavior.next( 2 );
     this.subscribe( observable, '#2 ' );
-    observable.next( 3 );
-    observable.complete();
+    behavior.next( 3 );
+    behavior.complete();
   }
 
   private initHotSubjectSample() {

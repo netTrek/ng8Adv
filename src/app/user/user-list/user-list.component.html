@@ -60,7 +60,7 @@
 </ng-container>
 -->
 
-<rp-user-list-item  *ngFor="let user of userList"
+<rp-user-list-item  *ngFor="let user of $user.userList"
                     (selectUsr)="selectUser( $event )"
                     [user]="user">
 </rp-user-list-item>
@@ -82,8 +82,8 @@
 <input type="text"
        #lastname
        placeholder="lastname">
-<button  (click)="addUser( firstname.value, lastname.value)">add</button>
-<button *ngIf="selectedUser"  rpBrother [rpDangerBtn]="'willst du '+selectedUser.firstname+' löschen?'" (confirmed)="delSelected()">del selected</button>
+<button  (click)="$user.addUser( firstname.value, lastname.value)">add</button>
+<button *ngIf="selectedUser"  rpBrother [rpDangerBtn]="'willst du '+selectedUser.firstname+' löschen?'" (confirmed)="$user.delSelected( selectedUser )">del selected</button>
 <!--
 <button *ngIf="selectedUser" rpBrother rpDangerBtn="willst du löschen?" (confirmed)="delSelected()">del selected</button>
 

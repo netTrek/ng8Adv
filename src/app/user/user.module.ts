@@ -4,6 +4,7 @@ import { UserComponent } from './user.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserListItemComponent } from './user-list/user-list-item/user-list-item.component';
 import { UtilsModule } from '../utils/utils.module';
+import { UserService } from './user-service';
 
 @NgModule( {
   declarations: [ UserComponent,
@@ -16,7 +17,8 @@ import { UtilsModule } from '../utils/utils.module';
   exports: [
     UserComponent,
     UserListComponent
-  ]
+  ],
+  providers: []
   // exports: [UserComponent]
 })
 export class UserModule { }

@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { UserService } from './user-service';
 
 @Component ( {
   selector   : 'rp-user',
   // template: '<strong>hello</strong>',
   // template: `<h1>user</h1>
   // <h2>{{name}}</h2>`,
-  templateUrl: './user.co' +
-    'mponent.html',
+  templateUrl: './user.component.html',
   // styles: [ `/*h1 { background: red}*/`]
   styleUrls  : [ './user.component.scss' ]
   // encapsulation: ViewEncapsulation.ShadowDomNone
@@ -23,7 +23,7 @@ export class UserComponent implements OnInit, OnDestroy {
   private intervalID: number;
   htmlStr = `Hello <strong>world!</strong><script>document.location.href = 'https://netTrek.de'</script>`;
 
-  constructor() {
+  constructor(  ) {
   }
 
   ngOnInit() {

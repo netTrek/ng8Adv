@@ -7,8 +7,8 @@ import { User } from './user';
 import { UserStoreService } from './user-store.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
+import { subscribeOn, tap } from 'rxjs/operators';
+import { Observable, pipe } from 'rxjs';
 
 @Injectable ( { providedIn: 'root' } )
 export class UserService {
@@ -31,24 +31,31 @@ export class UserService {
     return this.$http.get<User> ( environment.endpoint + id );
   }
 
-  addUser( firstname: string, lastname: string ) {
-    if ( firstname.trim () !== ''
+  updateUser( user: User ): Observable<User> {
+    return this.$http.put<User>( environment.endpoint + user.id, user  )
+      .pipe(
+        tap (next => this.updateUserList() )
+      );
+  }
+
+  addUser( user: User ): Observable<User> {
+    if ( user.firstname.trim () !== ''
       &&
-      lastname.trim () !== ''
+      user.lastname.trim () !== ''
     ) {
-      this.$http
-          .post <User> ( environment.endpoint, { firstname, lastname } )
+      return this.$http
+          .post <User> ( environment.endpoint, user )
           .pipe (
             tap ( () => this.updateUserList () )
-          )
-          .subscribe (
-            // locale Datenhaltung;
-            // newUsr => {
-            //   this.userStore$.setValue( 'userList', [
-            //     ...this.userStore$.value.userList, newUsr
-            //   ] );
-            // }
           );
+          // .subscribe (
+          //   // locale Datenhaltung;
+          //   // newUsr => {
+          //   //   this.userStore$.setValue( 'userList', [
+          //   //     ...this.userStore$.value.userList, newUsr
+          //   //   ] );
+          //   // }
+          // );
       // this.userStore$.setValue( 'userList', [
       //   ...this.userStore$.value.userList, { firstname, lastname }
       // ] );
@@ -63,12 +70,19 @@ export class UserService {
 
   delSelected( selectedUser: User | undefined ) {
     if ( !!selectedUser ) {
-      const userList = this.userStore$.value.userList;
-      userList.splice (
-        userList.indexOf ( selectedUser ),
-        1
-      );
-      this.userStore$.setValue ( 'userList', userList );
+
+      this.$http.delete( environment.endpoint + selectedUser.id + '000000000' )
+        .subscribe(
+          next => this.updateUserList (),
+          error => alert ( 'Datensatz konnte nicht gelöscht werden' )
+        );
+
+      // const userList = this.userStore$.value.userList;
+      // userList.splice (
+      //   userList.indexOf ( selectedUser ),
+      //   1
+      // );
+      // this.userStore$.setValue ( 'userList', userList );
       // const userList = this.userList$.value;
       // userList.splice (
       //   userList.indexOf ( selectedUser ),

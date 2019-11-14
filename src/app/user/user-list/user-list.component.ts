@@ -22,6 +22,10 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor( public $user: UserService,
                public $userStore: UserStoreService ) {
+
+    // $user.getUserByID( 1 ).subscribe(
+    //   next => console.log ( next )
+    // );
   }
 
   ngOnInit() {

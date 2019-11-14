@@ -7,6 +7,8 @@ import { User } from './user';
 import { UserStoreService } from './user-store.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable ( { providedIn: 'root' } )
 export class UserService {
@@ -20,9 +22,13 @@ export class UserService {
     //   userList => this.userStore$.setValue( 'userList', userList )
     // );
     this.userStore$
-        .setValue( 'userList',
-                   this.$http
-                       .get<User[]> ( environment.endpoint ) );
+        .setValue ( 'userList',
+          this.$http
+              .get<User[]> ( environment.endpoint ) );
+  }
+
+  getUserByID( id: number ): Observable<User> {
+    return this.$http.get<User> ( environment.endpoint + id );
   }
 
   addUser( firstname: string, lastname: string ) {
@@ -30,9 +36,22 @@ export class UserService {
       &&
       lastname.trim () !== ''
     ) {
-      this.userStore$.setValue( 'userList', [
-        ...this.userStore$.value.userList, { firstname, lastname }
-      ] );
+      this.$http
+          .post <User> ( environment.endpoint, { firstname, lastname } )
+          .pipe (
+            tap ( () => this.updateUserList () )
+          )
+          .subscribe (
+            // locale Datenhaltung;
+            // newUsr => {
+            //   this.userStore$.setValue( 'userList', [
+            //     ...this.userStore$.value.userList, newUsr
+            //   ] );
+            // }
+          );
+      // this.userStore$.setValue( 'userList', [
+      //   ...this.userStore$.value.userList, { firstname, lastname }
+      // ] );
       // this.userList$.next ( [ ...this.userList$.value,
       //                         { firstname, lastname }
       // ] );
@@ -49,7 +68,7 @@ export class UserService {
         userList.indexOf ( selectedUser ),
         1
       );
-      this.userStore$.setValue( 'userList', userList );
+      this.userStore$.setValue ( 'userList', userList );
       // const userList = this.userList$.value;
       // userList.splice (
       //   userList.indexOf ( selectedUser ),

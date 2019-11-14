@@ -12,8 +12,8 @@ export class UserStoreService extends AbstractStore<UserModel> {
   constructor() {
     super ( {
         userList: [
-          { firstname: 'saban', lastname: 'uenlue' },
-          { firstname: 'peter', lastname: 'mueller' }
+          // { firstname: 'saban', lastname: 'uenlue' },
+          // { firstname: 'peter', lastname: 'mueller' }
         ]
       }
     );

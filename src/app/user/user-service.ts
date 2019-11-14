@@ -4,13 +4,25 @@
  */
 import { Injectable } from '@angular/core';
 import { User } from './user';
-import { BehaviorSubject } from 'rxjs';
 import { UserStoreService } from './user-store.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable ( { providedIn: 'root' } )
 export class UserService {
 
-  constructor( private userStore$: UserStoreService ) {
+  constructor( private userStore$: UserStoreService, private $http: HttpClient ) {
+    this.init ();
+  }
+
+  updateUserList() {
+    // this.$http.get<User[]> ( environment.endpoint ).subscribe(
+    //   userList => this.userStore$.setValue( 'userList', userList )
+    // );
+    this.userStore$
+        .setValue( 'userList',
+                   this.$http
+                       .get<User[]> ( environment.endpoint ) );
   }
 
   addUser( firstname: string, lastname: string ) {
@@ -45,5 +57,9 @@ export class UserService {
       // );
       // this.userList$.next ( userList );
     }
+  }
+
+  private init() {
+    this.updateUserList ();
   }
 }

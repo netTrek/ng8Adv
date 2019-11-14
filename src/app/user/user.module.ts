@@ -6,6 +6,7 @@ import { UserListItemComponent } from './user-list/user-list-item/user-list-item
 import { UtilsModule } from '../utils/utils.module';
 import { UserService } from './user-service';
 import { COMPANIES, RUNDP } from '../app.incection-tokens';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule( {
   declarations: [ UserComponent,
@@ -13,7 +14,8 @@ import { COMPANIES, RUNDP } from '../app.incection-tokens';
                   UserListItemComponent ],
   imports: [
     CommonModule,
-    UtilsModule
+    UtilsModule,
+    HttpClientModule
   ],
   exports: [
     UserComponent,

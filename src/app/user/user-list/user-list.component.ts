@@ -1,8 +1,9 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, QueryList, Renderer2, ViewChild, ViewChildren } from '@angular/core';
 import { User } from '../user';
 import { UserListItemComponent } from './user-list-item/user-list-item.component';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { UserService } from '../user-service';
+import { UserStoreService } from '../user-store.service';
 
 @Component({
   selector: 'rp-user-list',
@@ -16,9 +17,11 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChildren ( UserListItemComponent )
   userItems: QueryList<UserListItemComponent>;
   selectedUser: User;
+  userList$: Observable<User[]> = this.$userStore.getKey('userList' );
   private sub: Subscription = new Subscription();
 
-  constructor( public $user: UserService ) {
+  constructor( public $user: UserService,
+               public $userStore: UserStoreService ) {
   }
 
   ngOnInit() {

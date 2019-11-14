@@ -60,13 +60,12 @@
 </ng-container>
 -->
 
-<rp-user-list-item  *ngFor="let user of $user.userList"
+<rp-user-list-item  *ngFor="let user of userList$ | async as userList"
                     (selectUsr)="selectUser( $event )"
                     [user]="user">
 </rp-user-list-item>
 
 <!--
-
 <rp-user-list-item (selectUsr)="selectUser( $event )"
                    [user]="userList[1]">
 </rp-user-list-item>

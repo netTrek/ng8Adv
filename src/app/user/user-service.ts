@@ -4,32 +4,46 @@
  */
 import { Injectable } from '@angular/core';
 import { User } from './user';
+import { BehaviorSubject } from 'rxjs';
+import { UserStoreService } from './user-store.service';
 
-@Injectable ( {providedIn: 'root'} )
+@Injectable ( { providedIn: 'root' } )
 export class UserService {
-  userList: User[] =
-    [
-      {firstname: 'saban', lastname: 'uenlue'},
-      {firstname: 'peter', lastname: 'mueller'}
-    ];
+
+  constructor( private userStore$: UserStoreService ) {
+  }
 
   addUser( firstname: string, lastname: string ) {
-    if ( firstname.trim() !== ''
+    if ( firstname.trim () !== ''
       &&
-      lastname.trim() !== ''
+      lastname.trim () !== ''
     ) {
-      this.userList.push(
-        { firstname, lastname }
-      );
+      this.userStore$.setValue( 'userList', [
+        ...this.userStore$.value.userList, { firstname, lastname }
+      ] );
+      // this.userList$.next ( [ ...this.userList$.value,
+      //                         { firstname, lastname }
+      // ] );
+      // this.userList.push (
+      //   { firstname, lastname }
+      // );
     }
   }
 
-  delSelected( selectedUser: User|undefined  ) {
+  delSelected( selectedUser: User | undefined ) {
     if ( !!selectedUser ) {
-      this.userList.splice(
-        this.userList.indexOf( selectedUser ),
+      const userList = this.userStore$.value.userList;
+      userList.splice (
+        userList.indexOf ( selectedUser ),
         1
       );
+      this.userStore$.setValue( 'userList', userList );
+      // const userList = this.userList$.value;
+      // userList.splice (
+      //   userList.indexOf ( selectedUser ),
+      //   1
+      // );
+      // this.userList$.next ( userList );
     }
   }
 }

@@ -17,7 +17,7 @@ export class UserListComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChildren ( UserListItemComponent )
   userItems: QueryList<UserListItemComponent>;
   selectedUser: User;
-  userList$: Observable<User[]> = this.$userStore.getKey('userList' );
+  userList$: Observable<User[]> = this.$userStore.select('userList' );
   private sub: Subscription = new Subscription();
 
   constructor( public $user: UserService,

@@ -71,7 +71,7 @@ export class UserService {
   delSelected( selectedUser: User | undefined ) {
     if ( !!selectedUser ) {
 
-      this.$http.delete( environment.endpoint + selectedUser.id + '000000000' )
+      this.$http.delete( environment.endpoint + selectedUser.id /*+ '000000000'*/ )
         .subscribe(
           next => this.updateUserList ()/*,
           error => alert ( 'Datensatz konnte nicht gelöscht werden' )*/

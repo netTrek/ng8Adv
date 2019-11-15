@@ -8,7 +8,6 @@ import { UtilsModule } from './utils/utils.module';
 import { ContentSampleModule } from './content-sample/content-sample.module';
 import { PipeSamplesModule } from './pipe-samples/pipe-samples.module';
 
-
 import localeDE from '@angular/common/locales/de';
 import { registerLocaleData } from '@angular/common';
 import { RxjsSamplesModule } from './rxjs-samples/rxjs-samples.module';
@@ -18,34 +17,55 @@ import { AppErrorInterceptorService } from './app-error-interceptor.service';
 import { AuthInterceptorService } from './auth-interceptor.service';
 import { HomeModule } from './home/home.module';
 import { ContactModule } from './contact/contact.module';
-registerLocaleData( localeDE );
+import { NavigationEnd, Router } from '@angular/router';
+import { filter, map, tap } from 'rxjs/operators';
+
+registerLocaleData ( localeDE );
 
 export const myFac = locale => locale === 'de' ? 'deutsch' : 'englisch';
 
-@NgModule({
+@NgModule ( {
   declarations: [
     AppComponent
   ],
-  imports: [
+  imports     : [
     BrowserModule,
     AppRoutingModule,
-    UserModule, UtilsModule, ContentSampleModule, PipeSamplesModule, RxjsSamplesModule, HomeModule, ContactModule
+    UserModule,
+    UtilsModule,
+    ContentSampleModule,
+    PipeSamplesModule,
+    RxjsSamplesModule,
+    HomeModule,
+    ContactModule
   ],
-  providers: [
-    {provide: LOCALE_ID, useValue: 'de' },
-    {provide: 'saban', useValue: 'saban uenlue' },
-    {provide: RUNDP, useValue: 'rundp' },
-    {provide: COMPANIES, useValue: 'rundp', multi: true  },
-    {provide: FAC_TEST, useFactory: myFac, deps: [ LOCALE_ID] },
-    {provide: HTTP_INTERCEPTORS,
+  providers   : [
+    { provide: LOCALE_ID, useValue: 'de' },
+    { provide: 'saban', useValue: 'saban uenlue' },
+    { provide: RUNDP, useValue: 'rundp' },
+    { provide: COMPANIES, useValue: 'rundp', multi: true },
+    { provide: FAC_TEST, useFactory: myFac, deps: [ LOCALE_ID ] },
+    {
+      provide : HTTP_INTERCEPTORS,
       useClass: AppErrorInterceptorService,
-      multi: true },
-    {provide: HTTP_INTERCEPTORS,
+      multi   : true
+    },
+    {
+      provide : HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
-      multi: true }
+      multi   : true
+    }
   ],
-  bootstrap: [AppComponent]
-})
+  bootstrap   : [ AppComponent ]
+} )
 export class AppModule {
-
+  constructor( router: Router ) {
+    router.events
+          .pipe(
+            // filter( event => event instanceof NavigationEnd ),
+            tap ( x => console.log ( x ) ),
+            map<NavigationEnd, string>( event => event.urlAfterRedirects )
+          )
+          .subscribe( event => console.log ( event ) );
+  }
 }

@@ -8,10 +8,14 @@ import { MapComponent } from './contact/map/map.component';
 import { FormComponent } from './contact/form/form.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
 import { UserResolveService } from './user/user-resolve.service';
+import { UserDetailGuard } from './user/user-details/user-detail.guard';
+import { PipeSamplesComponent } from './pipe-samples/pipe-samples.component';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: 'pipes', component: PipeSamplesComponent,
+    outlet: 'modal' },
   { path: 'users', component: UserComponent },
   { path: 'users/:id', component: UserDetailsComponent,
     resolve: {
@@ -19,7 +23,8 @@ const routes: Routes = [
     },
     data: {
       myVal: 'test'
-    }
+    },
+    canActivate: [UserDetailGuard]
   },
   { path: 'countdown', component: CountdownComponent },
   { path: 'contact', component: ContactComponent, children: [

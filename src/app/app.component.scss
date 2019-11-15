@@ -1,0 +1,7 @@
+:host {
+  ::ng-deep a[routerLinkActive].active {
+    color: green;
+    font-size: larger;
+    cursor: default;
+  }
+}

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CountdownComponent } from './countdown/countdown.component';
 import { DangerBtnDirective } from './danger-btn.directive';
 import { BrotherDirective } from './brother.directive';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -14,7 +15,8 @@ import { BrotherDirective } from './brother.directive';
     DangerBtnDirective
   ],
   imports     : [
-    CommonModule
+    CommonModule,
+    RouterModule
   ]
 })
 export class UtilsModule { }

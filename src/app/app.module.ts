@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { InjectionToken, LOCALE_ID, NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,8 +17,6 @@ import { AppErrorInterceptorService } from './app-error-interceptor.service';
 import { AuthInterceptorService } from './auth-interceptor.service';
 import { HomeModule } from './home/home.module';
 import { ContactModule } from './contact/contact.module';
-import { NavigationEnd, Router } from '@angular/router';
-import { filter, map, tap } from 'rxjs/operators';
 
 registerLocaleData ( localeDE );
 
@@ -59,13 +57,5 @@ export const myFac = locale => locale === 'de' ? 'deutsch' : 'englisch';
   bootstrap   : [ AppComponent ]
 } )
 export class AppModule {
-  constructor( router: Router ) {
-    router.events
-          .pipe(
-            // filter( event => event instanceof NavigationEnd ),
-            tap ( x => console.log ( x ) ),
-            map<NavigationEnd, string>( event => event.urlAfterRedirects )
-          )
-          .subscribe( event => console.log ( event ) );
-  }
+
 }

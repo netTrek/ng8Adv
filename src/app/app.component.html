@@ -69,7 +69,7 @@ erstellt Componente... erlaubt des Export der Componente, kein eigener Ordner, k
 
 <router-outlet></router-outlet>
 
-<div class="modal">
-  <button>x</button>
+<div class="modal" [ngClass]="{active: showModal}">
+  <button (click)="closeModal()">x</button>
   <router-outlet name="modal"></router-outlet>
 </div>

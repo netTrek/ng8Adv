@@ -15,14 +15,23 @@ export class UserDetailsComponent implements OnInit {
   constructor( private route: ActivatedRoute, private $user: UserService ) { }
 
   ngOnInit() {
-    this.route.paramMap
-        .pipe(
-          map( paramMap => parseInt( paramMap.get ( 'id' ), 10 ) )
-        )
-        .subscribe( next => {
-          this.$user.getUserByID( next )
-              .subscribe( user => this.user = user );
-        } );
+
+    this.route.data
+        .pipe( map ( value => [value.user, value.myVal] ) )
+        .subscribe( ([user, myVal]) => {
+            this.user = user;
+            console.log ( myVal );
+          }
+        );
+
+    // this.route.paramMap
+    //     .pipe(
+    //       map( paramMap => parseInt( paramMap.get ( 'id' ), 10 ) )
+    //     )
+    //     .subscribe( next => {
+    //       this.$user.getUserByID( next )
+    //           .subscribe( user => this.user = user );
+    //     } );
   }
 
 }

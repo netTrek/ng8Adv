@@ -7,12 +7,20 @@ import { ContactComponent } from './contact/contact.component';
 import { MapComponent } from './contact/map/map.component';
 import { FormComponent } from './contact/form/form.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
+import { UserResolveService } from './user/user-resolve.service';
 
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'users', component: UserComponent },
-  { path: 'users/:id', component: UserDetailsComponent },
+  { path: 'users/:id', component: UserDetailsComponent,
+    resolve: {
+      user: UserResolveService
+    },
+    data: {
+      myVal: 'test'
+    }
+  },
   { path: 'countdown', component: CountdownComponent },
   { path: 'contact', component: ContactComponent, children: [
     { path: 'map', component: MapComponent },

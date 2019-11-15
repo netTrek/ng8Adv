@@ -21,8 +21,11 @@
 <rp-countdown style="width: 200px"></rp-countdown>
 <rp-countdown style="width: 100px"></rp-countdown>
 -->
+<!--
 <h3 *ngIf="action">Benutzer {{action}}</h3>
 <rp-user>show user</rp-user>
+-->
+
 <!--
 -->
 <!--
@@ -37,3 +40,8 @@ erstellt Componente... erlaubt des Export der Componente, kein eigener Ordner, k
 <rp-rxjs-samples></rp-rxjs-samples>
 <rp-countdown></rp-countdown>
 -->
+
+<a routerLink="home">home</a> |
+<a routerLink="users">users</a> |
+<a routerLink="countdown">countdown</a>
+<router-outlet></router-outlet>

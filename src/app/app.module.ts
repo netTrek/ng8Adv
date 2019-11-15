@@ -16,6 +16,7 @@ import { COMPANIES, FAC_TEST, RUNDP } from './app.incection-tokens';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppErrorInterceptorService } from './app-error-interceptor.service';
 import { AuthInterceptorService } from './auth-interceptor.service';
+import { HomeModule } from './home/home.module';
 registerLocaleData( localeDE );
 
 export const myFac = locale => locale === 'de' ? 'deutsch' : 'englisch';
@@ -27,7 +28,7 @@ export const myFac = locale => locale === 'de' ? 'deutsch' : 'englisch';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    UserModule, UtilsModule, ContentSampleModule, PipeSamplesModule, RxjsSamplesModule
+    UserModule, UtilsModule, ContentSampleModule, PipeSamplesModule, RxjsSamplesModule, HomeModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'de' },

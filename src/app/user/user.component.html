@@ -1,0 +1,7 @@
+<p>user works!</p>
+<div *ngIf="loading$ | async"> LOADING </div>
+<ul *ngIf="success$ | async">
+   <li *ngFor="let user of users$ | async">{{user.lastname}}</li>
+</ul>
+<div *ngIf="error$ | async as error">UPS .... </div>
+<button (click)="loadUsers()">load</button>

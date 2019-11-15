@@ -1,0 +1,15 @@
+<p>score works!</p>
+
+<div>
+    <div>
+        <button (click)="incrementHome()">+</button>
+        <button (click)="decrementHome()">-</button>
+        <span> home [{{home$ | async }}] | [{{visitor$ | async }}] vistor </span>
+        <button (click)="decrementVisitor()">-</button>
+        <button (click)="incrementVisitor()">+</button>
+    </div>
+    <div>
+        <button (click)="resetScore()">x</button>
+        <button (click)="setScore()">10</button>
+    </div>
+</div>

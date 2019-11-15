@@ -85,6 +85,7 @@
 <ng-container *ngIf="selectedUser; else addBlock ">
   <button (click)="editUser()">edit</button>
   <button rpBrother [rpDangerBtn]="'willst du '+selectedUser.firstname+' löschen?'" (confirmed)="delSelected( selectedUser )">del selected</button>
+  <button [routerLink]="[ selectedUser.id ]">show details</button>
 </ng-container>
 <ng-template #addBlock>
   <button  (click)="addUser()">add</button>

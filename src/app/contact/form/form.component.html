@@ -1,4 +1,9 @@
-<form>
-  <input type="text" placeholder="wer bist du">
-  <textarea name="msg" cols="30" rows="10"></textarea>
+<form #myForm="ngForm">
+  <input type="text" ngModel name="username" placeholder="username" #username="ngModel">
+  <span ngModelGroup="credentials">
+    <input type="email" ngModel name="email" placeholder="email" #email="ngModel">
+    <input type="password" ngModel name="password" placeholder="password" #password="ngModel">
+  </span>
 </form>
+
+<p>{{myForm.value | json}}</p>

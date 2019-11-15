@@ -18,6 +18,7 @@ const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'map' }
     ] },
   { path: '', pathMatch: 'full', redirectTo: 'home' },
+  { path: 'dash', loadChildren: './dash/dash.module#DashModule' },
   { path: '**', redirectTo: 'home' }
 ];
 

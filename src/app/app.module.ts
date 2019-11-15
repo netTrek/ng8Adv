@@ -17,6 +17,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppErrorInterceptorService } from './app-error-interceptor.service';
 import { AuthInterceptorService } from './auth-interceptor.service';
 import { HomeModule } from './home/home.module';
+import { ContactModule } from './contact/contact.module';
 registerLocaleData( localeDE );
 
 export const myFac = locale => locale === 'de' ? 'deutsch' : 'englisch';
@@ -28,7 +29,7 @@ export const myFac = locale => locale === 'de' ? 'deutsch' : 'englisch';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    UserModule, UtilsModule, ContentSampleModule, PipeSamplesModule, RxjsSamplesModule, HomeModule
+    UserModule, UtilsModule, ContentSampleModule, PipeSamplesModule, RxjsSamplesModule, HomeModule, ContactModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'de' },

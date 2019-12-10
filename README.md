@@ -1,5 +1,10 @@
 # TrainingHH
 
+## module anlegen
+ng generate module user --module app
+## module option bestimmt wo das neu erstellt Modul als abh. importiert werden soll.
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
 
 ## Development server

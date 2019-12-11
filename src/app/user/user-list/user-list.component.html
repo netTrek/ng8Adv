@@ -3,7 +3,27 @@
     {{user.firstname}}
   </li>
 </ul>-->
+<p>{{selectedUser | json}}</p>
 <nt-user-list-item
   *ngFor="let user of this.userList"
   [user]="user"
+  [isSelected]="selectedUser===user"
+  (selectedUsr)="selectUser ($event)"
 ></nt-user-list-item>
+
+
+
+
+
+
+
+
+
+<!--
+<nt-user-list-item
+  *ngFor="let user of this.userList"
+  [user]="user"
+  (selectedUsr)="selectUser ($event)"
+  [class.selected]="selectedUser === user"
+></nt-user-list-item>
+-->

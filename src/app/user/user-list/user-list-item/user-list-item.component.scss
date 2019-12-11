@@ -1,3 +1,11 @@
 :host {
   display: block;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  &.selected {
+    background-color: linen;
+  }
 }

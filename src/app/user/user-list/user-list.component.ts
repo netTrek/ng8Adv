@@ -12,6 +12,7 @@ export class UserListComponent implements OnInit {
     {firstname: 'saban', lastname: 'ünlü'},
     {firstname: 'peter', lastname: 'müller'}
   ];
+  selectedUser: User;
 
   constructor() { }
 
@@ -21,4 +22,11 @@ export class UserListComponent implements OnInit {
     }*/
   }
 
+  selectUser( user: User ) {
+    if ( this.selectedUser === user ) {
+      this.selectedUser = undefined;
+    } else {
+      this.selectedUser = user;
+    }
+  }
 }

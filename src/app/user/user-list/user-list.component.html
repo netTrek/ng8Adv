@@ -1,1 +1,9 @@
-<p>user-list works!</p>
+<!--<ul>
+  <li *ngFor="let user of this.userList">
+    {{user.firstname}}
+  </li>
+</ul>-->
+<nt-user-list-item
+  *ngFor="let user of this.userList"
+  [user]="user"
+></nt-user-list-item>

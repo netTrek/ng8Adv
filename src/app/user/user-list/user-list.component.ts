@@ -29,4 +29,23 @@ export class UserListComponent implements OnInit {
       this.selectedUser = user;
     }
   }
+
+  addNewUser( firstname: string, lastname: string ) {
+    this.selectedUser = { firstname, lastname };
+    this.userList.push( this.selectedUser );
+  }
+
+  updateSelectedUser( firstname: string,
+                      lastname: string ) {
+    this.selectedUser.lastname = lastname;
+    this.selectedUser.firstname = firstname;
+  }
+
+  delSelectedUsr() {
+    this.userList.splice(
+      this.userList.indexOf( this.selectedUser ),
+      1
+    );
+    this.selectedUser = undefined;
+  }
 }

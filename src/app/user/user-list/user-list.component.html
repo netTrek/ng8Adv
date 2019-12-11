@@ -3,15 +3,63 @@
     {{user.firstname}}
   </li>
 </ul>-->
-<p>{{selectedUser | json}}</p>
+<h4><ng-content></ng-content></h4>
+<p *ngIf="selectedUser; else noSelectedUsr">{{selectedUser.firstname}} {{selectedUser.lastname}}</p>
+<ng-template #noSelectedUsr>
+  <p>please select an user</p>
+</ng-template>
+
+<!--
+<p *ngIf="!selectedUser">please select an user</p>
+-->
+
+<!--
+<ng-container *ngIf="selectedUser">
+  <h1></h1>
+  <div></div>
+</ng-container>
+-->
+
+<!--
+<ng-template [ngIf]="selectedUser">
+  <p >{{selectedUser | json}}</p>
+</ng-template>
+-->
+
+<!--
+<ul>
+  <li *ngFor="let val of [1,2,3,4,5]; index as i">#{{i}} {{val}}</li>
+</ul>
+-->
+
+<div ntDangerBtn></div>
+
 <nt-user-list-item
-  *ngFor="let user of this.userList"
+  *ngFor="let user of this.userList; even as e; odd as o"
+  [ngClass]="{even: e, odd: o}"
   [user]="user"
   [isSelected]="selectedUser===user"
   (selectedUsr)="selectUser ($event)"
 ></nt-user-list-item>
 
-
+<ng-container *ngIf="selectedUser; else addUSr">
+  <input type="text" placeholder="firstname"
+         #firstname
+         [value]="selectedUser.firstname">
+  <input type="text" placeholder="lastname"
+         #lastname
+         [value]="selectedUser.lastname">
+  <button
+    (click)="updateSelectedUser ( firstname.value, lastname.value ) ">
+    update [~]</button>
+  <button ntDangerBtn="willst du {{selectedUser.firstname}} wirklich löschen?"
+          (confirmed)="delSelectedUsr()">delete [-]</button>
+</ng-container>
+<ng-template #addUSr>
+  <input type="text" placeholder="firstname" #firstname>
+  <input type="text" placeholder="lastname" #lastname>
+  <button (click)="addNewUser ( firstname.value, lastname.value ) ">add [+]</button>
+</ng-template>
 
 
 

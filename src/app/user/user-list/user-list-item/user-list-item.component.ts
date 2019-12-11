@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, HostListener, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { User } from '../../user';
 
 @Component ( {
@@ -6,7 +6,7 @@ import { User } from '../../user';
   templateUrl: './user-list-item.component.html',
   styleUrls  : [ './user-list-item.component.scss' ]
 } )
-export class UserListItemComponent implements OnInit {
+export class UserListItemComponent implements OnInit, OnChanges {
 
   @Input ()
   user: User;
@@ -27,6 +27,19 @@ export class UserListItemComponent implements OnInit {
   @HostListener ( 'click' )
   click() {
     this.selectedUsr.emit( this.user );
+  }
+
+  ngOnChanges( changes: SimpleChanges ): void {
+    if ( changes.hasOwnProperty('isSelected') ) {
+      const val = changes.isSelected.currentValue;
+      if ( val === true ) {
+        // console.log ( 'item is selected' );
+      } else {
+        if ( !changes.isSelected.firstChange ) {
+          // console.log ( 'item is deselected' );
+        }
+      }
+    }
   }
 
 }

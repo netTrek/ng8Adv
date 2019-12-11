@@ -1,0 +1,11 @@
+:host {
+  display: block;
+  width: 300px;
+  height: auto;
+  background-color: red;
+  span {
+    background-color: green;
+    width: 100%;
+    display: block;
+  }
+}

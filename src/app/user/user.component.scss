@@ -1,6 +1,9 @@
-:host {
+:host { // komponente selbst
   background-color: antiquewhite;
   display: block;
+  ::ng-deep article { // verschachtelte Elemente ohne attribut definieren
+    color: green;
+  }
 }
 h4 {
   color: darkgray;

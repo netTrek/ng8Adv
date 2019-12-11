@@ -1,0 +1,41 @@
+<h4>bindings</h4>
+
+
+<hr>
+<h5>style</h5>
+<div [style.color]="fontColor">Saban</div>
+<div [style.backgroundColor]="fontColor"
+     [style.width]="widthInPercent"
+>Saban</div>
+<div [style.backgroundColor]="fontColor"
+     [style.width]="width + '%'"
+>Saban</div>
+<div [style.backgroundColor]="fontColor"
+     [style.width.%]="width"
+>Saban</div>
+<hr>
+<h5>class</h5>
+<hr>
+<h5>Ereignis</h5>
+
+
+<hr>
+<h5>Interpol</h5>
+<div>{{wertZumBinden}}</div>
+<div>String davor {{wertZumBinden}} string danach</div>
+<img width="10%" src="./assets/img/cat1.jpeg" alt="cat">
+<img width="10%" src="./assets/img/{{imgFile}}" alt="cat">
+<img width="10%" src="./assets/img/{{imgFileWithoutExt + '.jpeg'}}" alt="cat">
+<img width="10%" src="./assets/img/{{getFileWithExt( imgExt)}}" alt="cat">
+<button (click)="chgImg()">change Img</button>
+<button (click)="changeImgExt('png')">show as png</button>
+<hr>
+<h5>Eigenschaft</h5>
+<img width="10%" [src]="imgFileWithPath" alt="cat">
+<div [innerText]="text"></div>
+<div>{{html}}</div>
+<div [innerHTML]="html"></div>
+<hr>
+<h5>Attribut</h5>
+<div [attr.aria-label]="dynLabel">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet atque doloremque ea neque rem sapiente tempora. Laudantium nulla pariatur perferendis quaerat voluptates. Beatae, enim magnam nobis omnis quis voluptas?</div>
+<img width="10%" [attr.src]="imgFileWithPath" alt="cat">

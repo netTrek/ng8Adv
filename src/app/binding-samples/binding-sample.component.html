@@ -1,22 +1,16 @@
 <h4>bindings</h4>
 
-
-<hr>
-<h5>style</h5>
-<div [style.color]="fontColor">Saban</div>
-<div [style.backgroundColor]="fontColor"
-     [style.width]="widthInPercent"
->Saban</div>
-<div [style.backgroundColor]="fontColor"
-     [style.width]="width + '%'"
->Saban</div>
-<div [style.backgroundColor]="fontColor"
-     [style.width.%]="width"
->Saban</div>
-<hr>
-<h5>class</h5>
 <hr>
 <h5>Ereignis</h5>
+<div (click)="eventPayload( $event )"> click me</div>
+<div (mouseenter)="sayOver('enter', $event)">
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+</div>
+
 
 
 <hr>
@@ -39,3 +33,22 @@
 <h5>Attribut</h5>
 <div [attr.aria-label]="dynLabel">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab amet atque doloremque ea neque rem sapiente tempora. Laudantium nulla pariatur perferendis quaerat voluptates. Beatae, enim magnam nobis omnis quis voluptas?</div>
 <img width="10%" [attr.src]="imgFileWithPath" alt="cat">
+<hr>
+<h5>style</h5>
+<div [style.color]="fontColor">Saban</div>
+<div [style.backgroundColor]="fontColor"
+     [style.width]="widthInPercent"
+>Saban</div>
+<div [style.backgroundColor]="fontColor"
+     [style.width]="width + '%'"
+>Saban</div>
+<div [style.backgroundColor]="fontColor"
+     [style.width.%]="width"
+>Saban</div>
+<hr>
+<h5>class</h5>
+<div class="saban" [class.selected]="selected" (click)="toggleSelection()">use Class Saban</div>
+<div class="saban"
+     [class]="classList"
+>use Class Saban and bind classes</div>
+<div [class]="classList">binding only</div>

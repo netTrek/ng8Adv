@@ -27,6 +27,8 @@ export class BindingSampleComponent implements OnInit {
   widthInPercent    = '50%';
   width             = 100;
   private intervalId: number;
+  classList = 'class2 class3';
+  selected = false;
 
   constructor() {
   }
@@ -57,5 +59,17 @@ export class BindingSampleComponent implements OnInit {
 
   private stopInterval() {
     clearInterval ( this.intervalId );
+  }
+
+  toggleSelection() {
+    this.selected = !this.selected;
+  }
+
+  sayOver( type: string = 'over', mouseevent: MouseEvent) {
+    console.log ( type, mouseevent );
+  }
+
+  eventPayload( $event: MouseEvent ) {
+    console.log ( $event );
   }
 }

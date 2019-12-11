@@ -53,7 +53,12 @@
     (click)="updateSelectedUser ( firstname.value, lastname.value ) ">
     update [~]</button>
   <button ntDangerBtn="willst du {{selectedUser.firstname}} wirklich löschen?"
-          (confirmed)="delSelectedUsr()">delete [-]</button>
+          (confirmed)="delSelectedUsr()"
+          #dangerBtn="ntDangerBtn"
+  >delete [-]</button>
+  <!--
+  <button (click)="dangerBtn.backgroundColor = 'blue'">chg bg</button>
+  -->
 </ng-container>
 <ng-template #addUSr>
   <input type="text" placeholder="firstname" #firstname>

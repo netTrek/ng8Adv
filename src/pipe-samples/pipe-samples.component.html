@@ -1,0 +1,32 @@
+<h4>date</h4>
+<ul>
+  <li>{{date}}</li>
+  <li>{{date | date}}</li>
+  <li>{{date | date : 'long' : '+0800' }}</li>
+  <li>{{date | date : 'long' : '+0800' : 'de' }}</li>
+</ul>
+<h4>currency</h4>
+<ul>
+  <li>{{num}}</li>
+  <li>{{num | currency}}</li>
+  <li>{{num | currency : 'EUR'}}</li>
+  <li>{{num | currency : 'EUR' : 'code'}}</li>
+  <li>{{num | currency : 'EUR' : 'symbol'}}</li>
+  <li>{{num | currency : 'EUR' : 'symbol' : '.5'}}</li>
+  <li>{{num | currency : 'EUR' : 'symbol' : '.5' : 'de' }}</li>
+</ul>
+<h4>number</h4>
+<ul>
+  <li>{{num}}</li>
+  <li>{{num | number}}</li>
+  <li>{{num | number : '.5' }}</li>
+  <li>{{num | number : '.3-5' }}</li>
+  <li>{{num | number : '3.3-5' }}</li>
+  <li>{{num | number : '3.3-5' : 'de'  }}</li>
+</ul>
+<h4>string</h4>
+<ul>
+  <li>{{str}}</li>
+  <li>{{str | uppercase}}</li>
+  <li>{{str | lowercase}}</li>
+</ul>

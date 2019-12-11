@@ -1,9 +1,10 @@
-import { Directive, EventEmitter, HostBinding, HostListener, Input, Output } from '@angular/core';
+import { Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, Output } from '@angular/core';
 
 // <button [style.color]="fontColor"
 
 @Directive ( {
-  selector: 'button[ntDangerBtn]'
+  selector: 'button[ntDangerBtn]',
+  exportAs: 'ntDangerBtn'
 } )
 export class DangerBtnDirective {
 
@@ -22,8 +23,8 @@ export class DangerBtnDirective {
   @Input()
   ntDangerBtn: string;
 
-  constructor() {
-    // console.log ( 'hello world' );
+  constructor( private elemeRef: ElementRef ) {
+    console.log ( elemeRef );
   }
 
   @HostListener ( 'click' )

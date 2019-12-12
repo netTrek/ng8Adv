@@ -25,7 +25,7 @@ registerLocaleData( localeDE );
     PipeSamplesModule
   ],
   providers: [
-    {provide: LOCALE_ID, useValue: 'de' }
+    {provide: LOCALE_ID, useValue: 'de' },
   ],
   bootstrap: [AppComponent]
 })

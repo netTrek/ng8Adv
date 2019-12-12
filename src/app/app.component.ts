@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PlayWithMe } from './user/play-with-me';
 import { filter } from 'rxjs/operators';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component ( {
   selector   : 'nt-root',
@@ -10,9 +11,15 @@ import { filter } from 'rxjs/operators';
 export class AppComponent {
   title = 'trainingHH';
 
-  constructor( play: PlayWithMe ) {
+  constructor( play: PlayWithMe, router: Router ) {
     play.pipe(
       filter( value => !! value ),
     ).subscribe( value => console.log ( 'current num ob user', value ) );
+
+    router.events
+          .pipe( filter ( value => value instanceof NavigationEnd ))
+          .subscribe(
+      navEvent => console.log ( navEvent )
+    );
   }
 }

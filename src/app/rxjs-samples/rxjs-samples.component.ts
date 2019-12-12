@@ -18,7 +18,7 @@ export class RxjsSamplesComponent implements OnInit {
     // this.initNewSample ();
     // this.initSubjectSample();
     // this.initBehaviorSubjectSample();
-    this.initOfSample ();
+    // this.initOfSample ();
     this.data$ = interval ( 100 )
       .pipe ( take ( 10000 ) );
   }

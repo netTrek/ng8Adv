@@ -23,6 +23,10 @@ export class UserService {
     this.updatePlayVal ();
   }
 
+  getById( id: number ): Observable<User> {
+    return this.$http.get<User> ( environment.api + id );
+  }
+
   add( user: User ): Promise<User> {
     // this.userList.push ( user );
     // this.userList$.next ( [ ...this.userList$.value,
@@ -59,9 +63,11 @@ export class UserService {
     //   return true;
     // }
     // return false;
-    return this.$http.delete<void>(environment.api + user.id).pipe(
-      tap ( n => this.updateUsrList () )
-    ).toPromise();
+    return this.$http.delete<void> ( environment.api + user.id )
+               .pipe (
+                 tap ( n => this.updateUsrList () )
+               )
+               .toPromise ();
   }
 
   private updateUsrList(): void {

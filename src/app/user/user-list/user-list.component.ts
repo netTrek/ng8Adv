@@ -12,7 +12,7 @@ export class UserListComponent implements OnInit {
 
   selectedUser: User;
 
-  constructor( private $user: UserService ) {}
+  constructor( public $user: UserService ) {}
 
   ngOnInit() {
   }

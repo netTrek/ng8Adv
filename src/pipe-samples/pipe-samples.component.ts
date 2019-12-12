@@ -10,6 +10,11 @@ export class PipeSamplesComponent implements OnInit {
   num  = Math.PI;
   str  = 'Saban Ünlü';
   date = new Date ();
+  list = [ 1,
+           2,
+           3,
+           4
+  ];
 
   constructor() {
   }

@@ -38,7 +38,7 @@
   *ngFor="let user of this.$user.userList$ | async; even as e; odd as o"
   [ngClass]="{even: e, odd: o}"
   [user]="user"
-  [isSelected]="selectedUser===user"
+  [isSelected]="selectedUser?.id===user.id"
   (selectedUsr)="selectUser ($event)"
 ></nt-user-list-item>
 

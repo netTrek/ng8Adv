@@ -11,6 +11,7 @@ import { registerLocaleData } from '@angular/common';
 
 import localeDE from '@angular/common/locales/de';
 import { RxjsSamplesModule } from './rxjs-samples/rxjs-samples.module';
+import { HttpClientModule } from '@angular/common/http';
 registerLocaleData( localeDE );
 
 @NgModule({
@@ -25,7 +26,8 @@ registerLocaleData( localeDE );
     UtilsModule,
     PipeSamplesModule,
     RxjsSamplesModule,
-    RxjsSamplesModule
+    RxjsSamplesModule,
+    HttpClientModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'de' },

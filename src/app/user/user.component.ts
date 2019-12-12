@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { PlayWithMe } from './play-with-me';
 
 @Component({
   selector: 'nt-user',
@@ -10,7 +11,7 @@ import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@
 export class UserComponent implements OnInit {
   name = 'Saban Ünlü';
 
-  constructor() { }
+  constructor( public play: PlayWithMe ) { }
 
   ngOnInit() {
   }

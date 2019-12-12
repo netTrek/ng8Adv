@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
+import { PlayWithMe } from '../play-with-me';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'nt-user-list',
@@ -8,18 +10,11 @@ import { User } from '../user';
 })
 export class UserListComponent implements OnInit {
 
-  userList: User[] = [
-    {firstname: 'saban', lastname: 'ünlü'},
-    {firstname: 'peter', lastname: 'müller'}
-  ];
   selectedUser: User;
 
-  constructor() { }
+  constructor( private $user: UserService ) {}
 
   ngOnInit() {
-/*    for ( const user of this.userList ) {
-      console.log ( user );
-    }*/
   }
 
   selectUser( user: User ) {
@@ -32,20 +27,21 @@ export class UserListComponent implements OnInit {
 
   addNewUser( firstname: string, lastname: string ) {
     this.selectedUser = { firstname, lastname };
-    this.userList.push( this.selectedUser );
+    this.$user.add( this.selectedUser );
   }
 
   updateSelectedUser( firstname: string,
                       lastname: string ) {
-    this.selectedUser.lastname = lastname;
-    this.selectedUser.firstname = firstname;
+    this.selectedUser = this.$user.update(
+      this.selectedUser,
+      firstname,
+      lastname
+    );
   }
 
   delSelectedUsr() {
-    this.userList.splice(
-      this.userList.indexOf( this.selectedUser ),
-      1
-    );
-    this.selectedUser = undefined;
+    if ( this.$user.del( this.selectedUser ) ) {
+      this.selectedUser = undefined;
+    }
   }
 }

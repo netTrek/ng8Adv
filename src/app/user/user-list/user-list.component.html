@@ -35,7 +35,7 @@
 <div ntDangerBtn></div>
 
 <nt-user-list-item
-  *ngFor="let user of this.userList; even as e; odd as o"
+  *ngFor="let user of this.$user.userList; even as e; odd as o"
   [ngClass]="{even: e, odd: o}"
   [user]="user"
   [isSelected]="selectedUser===user"

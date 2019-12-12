@@ -4,15 +4,20 @@ import { UserComponent } from './user.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserListItemComponent } from './user-list/user-list-item/user-list-item.component';
 import { UtilsModule } from '../utils/utils.module';
+import { PlayWithMe } from './play-with-me';
 
 @NgModule ( {
-  declarations: [ UserComponent, UserListComponent, UserListItemComponent ],
+  declarations: [ UserComponent,
+                  UserListComponent,
+                  UserListItemComponent
+  ],
   imports     : [
-    CommonModule, UtilsModule
+    CommonModule,
+    UtilsModule
   ],
   exports     : [ // option --export packt die Komponente in diese Liste
     UserComponent/*, UserListComponent*/
-  ]
+  ], providers: [ PlayWithMe ]
 } )
 export class UserModule {
 }

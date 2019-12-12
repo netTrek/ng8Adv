@@ -26,7 +26,7 @@ export class BindingSampleComponent implements OnInit {
   fontColor         = 'blue';
   widthInPercent    = '50%';
   width             = 100;
-  private intervalId: number;
+  // private intervalId: number;
   classList = 'class2 class3';
   selected = false;
 
@@ -34,15 +34,15 @@ export class BindingSampleComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.intervalId = setInterval (
-      () => {
-        this.width -= 5;
-        if ( this.width === 10 ) {
-          this.stopInterval ();
-        }
-      },
-      100
-    );
+    // this.intervalId = setInterval (
+    //   () => {
+    //     this.width -= 5;
+    //     if ( this.width === 10 ) {
+    //       this.stopInterval ();
+    //     }
+    //   },
+    //   100
+    // );
   }
 
   chgImg() {
@@ -58,7 +58,7 @@ export class BindingSampleComponent implements OnInit {
   }
 
   private stopInterval() {
-    clearInterval ( this.intervalId );
+    // clearInterval ( this.intervalId );
   }
 
   toggleSelection() {

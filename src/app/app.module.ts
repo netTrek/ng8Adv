@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { TemplateOutletModule } from './template-outlet/template-outlet.module';
 import { StrucDirModule } from './struc-dir/struc-dir.module';
+import { DynCompModule } from './dyn-comp/dyn-comp.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { StrucDirModule } from './struc-dir/struc-dir.module';
   imports: [
     BrowserModule,
     TemplateOutletModule,
-    StrucDirModule
+    StrucDirModule,
+    DynCompModule
   ],
   providers: [],
   bootstrap: [AppComponent]

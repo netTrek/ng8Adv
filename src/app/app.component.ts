@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'nt-root',
   template: `
+    <nt-dyn-comp></nt-dyn-comp>
     <nt-template-outlet>
         <ng-template let-name>user {{name}}</ng-template>
     </nt-template-outlet>

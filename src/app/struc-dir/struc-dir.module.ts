@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UseStrucDirComponent } from './use-struc-dir/use-struc-dir.component';
-import { StrucDirDirective } from './struc-dir.directive-of';
+import { StrucDirDirectiveOf } from './struc-dir.directive-of';
 
 
 
 @NgModule({
-  declarations: [UseStrucDirComponent, StrucDirDirective],
+  declarations: [UseStrucDirComponent, StrucDirDirectiveOf],
   imports: [
     CommonModule
   ],
-  providers: [StrucDirDirective],
-  exports: [UseStrucDirComponent, StrucDirDirective]
+  exports: [UseStrucDirComponent,StrucDirDirectiveOf]
 })
 export class StrucDirModule { }

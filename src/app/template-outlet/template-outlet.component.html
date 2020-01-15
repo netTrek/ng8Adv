@@ -1,0 +1,18 @@
+<p>template-outlet works!</p>
+<hr>
+<ng-container *ngTemplateOutlet="temp1"></ng-container>
+<ng-template #temp1>Hello Temp 1</ng-template>
+<hr>
+<ng-container *ngTemplateOutlet="temp2; context: {$implicit: 'Saban'}"></ng-container>
+<ng-template #temp2 let-name>Hello Temp 2 {{name}}</ng-template>
+<hr>
+<ng-container *ngTemplateOutlet="temp3; context: {$implicit: 'Saban', testVal: 123}"></ng-container>
+<ng-template #temp3 let-name let-val="testVal">
+    Hello Temp 3 {{name}} # {{val}}
+</ng-template>
+
+<hr>
+<ng-container *ngTemplateOutlet="viaContentChild; context: {$implicit: 'Saban'}"></ng-container>
+
+<hr>
+<ng-template #viewContRef></ng-template>

@@ -20,7 +20,8 @@ export class ParentComponent extends IntervalRunner {
   updateVal () {
     super.updateVal ();
     if ( this.val % 3 === 0 ) {
-      this.cdr.markForCheck();
+      // this.cdr.markForCheck();
+      this.cdr.detectChanges();
     }
   }
 

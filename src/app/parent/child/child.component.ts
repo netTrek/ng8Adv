@@ -1,11 +1,11 @@
-import { ChangeDetectorRef, ChangeDetectionStrategy, Component } from '@angular/core';
+import { /*ChangeDetectorRef, ChangeDetectionStrategy,*/ Component } from '@angular/core';
 import { IntervalRunner } from '../../interval-runner';
 
 @Component({
   selector: 'nt-child',
   templateUrl: './child.component.html',
   styleUrls: ['./child.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChildComponent extends IntervalRunner {
 

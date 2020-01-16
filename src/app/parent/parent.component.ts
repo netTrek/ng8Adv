@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
 import { IntervalRunner } from '../interval-runner';
 
 @Component({
@@ -9,12 +9,19 @@ import { IntervalRunner } from '../interval-runner';
 })
 export class ParentComponent extends IntervalRunner {
 
-  constructor() {
+  constructor( private cdr: ChangeDetectorRef ) {
     super();
   }
 
   ngOnInit() {
     super.ngOnInit();
+  }
+
+  updateVal () {
+    super.updateVal ();
+    if ( this.val % 3 === 0 ) {
+      this.cdr.markForCheck();
+    }
   }
 
 }

@@ -1,4 +1,14 @@
-import { Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, Output } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  EventEmitter,
+  HostBinding,
+  HostListener,
+  Input,
+  Output,
+  TemplateRef,
+  ViewContainerRef
+} from '@angular/core';
 
 // <button [style.color]="fontColor"
 
@@ -23,7 +33,12 @@ export class DangerBtnDirective {
   @Input()
   ntDangerBtn: string;
 
-  constructor( private elemeRef: ElementRef ) {
+  @Input()
+  ntDangerBtnSaban: string;
+
+  constructor( private elemeRef: ElementRef,
+               private tempRef: TemplateRef<any>,
+               private viewRef: ViewContainerRef) {
     console.log ( elemeRef );
   }
 
